@@ -11,8 +11,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::get('/', 'Admin\BannersController@index');
         Route::get('/add', 'Admin\BannersController@addIndex');
         Route::post('/add', 'Admin\BannersController@add');
-        Route::get('/edit', 'Admin\BannersController@editIndex');
-        Route::post('/edit', 'Admin\BannersController@edit');
+        Route::get('/edit/{id}', 'Admin\BannersController@editIndex');
+        Route::post('/edit/{id}', 'Admin\BannersController@edit');
 
         Route::group(['prefix' => 'basket'], function (){
             Route::get('/', 'Admin\BannersController@basket');
@@ -26,8 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::get('/', 'Admin\TypesController@index');
         Route::get('/add', 'Admin\TypesController@addIndex');
         Route::post('/add', 'Admin\TypesController@add');
-        Route::get('/edit', 'Admin\TypesController@editIndex');
-        Route::post('/edit', 'Admin\TypesController@edit');
+        Route::get('/edit/{id}', 'Admin\TypesController@editIndex');
+        Route::post('/edit/{id}', 'Admin\TypesController@edit');
 
         Route::group(['prefix' => 'basket'], function (){
             Route::get('/', 'Admin\TypesController@basket');
@@ -41,8 +41,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::get('/', 'Admin\ProductsController@index');
         Route::get('/add', 'Admin\ProductsController@addIndex');
         Route::post('/add', 'Admin\ProductsController@add');
-        Route::get('/edit', 'Admin\ProductsController@editIndex');
-        Route::post('/edit', 'Admin\ProductsController@edit');
+        Route::get('/edit/{id}', 'Admin\ProductsController@editIndex');
+        Route::post('/edit/{id}', 'Admin\ProductsController@edit');
 
         Route::group(['prefix' => 'basket'], function (){
             Route::get('/', 'Admin\ProductsController@basket');

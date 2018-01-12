@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
-class CreateTypesTable extends Migration
+class EditTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +14,7 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('parrent_id')->unsigned();
-
-            $table->softDeletes();
-        });
+        DB::statement('ALTER TABLE types ADD FOREIGN KEY (parrent_id) REFERENCES types(id);');
     }
 
     /**
@@ -29,6 +24,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        //
     }
 }

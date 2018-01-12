@@ -34,7 +34,7 @@ class Banner extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name'
+        'name', 'image', 'isActive'
     ];
 
     protected $dates = ['deleted_at'];

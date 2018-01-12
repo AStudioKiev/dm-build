@@ -26,7 +26,7 @@ class Type extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'image', 'isActive'
+        'name'
     ];
 
     protected $dates = ['deleted_at'];

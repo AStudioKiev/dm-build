@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Type;
+
 class TypesController extends Controller
 {
     public function index()
     {
-        return view('admin.types.index');
+        $types = Type::all();
+        return view('admin.types.index', compact('types'));
     }
 
     public function addIndex()
@@ -19,36 +22,49 @@ class TypesController extends Controller
 
     public function add()
     {
-        return null;
+        Type::create(Request::all());
+        return redirect('admin/types');
     }
 
     public function editIndex($id)
     {
-        return view('admin.types.edit');
+        $type = Type::find($id);
+        return view('admin.types.edit', compact('type'));
     }
 
     public function edit($id)
     {
-        return null;
+        $type = Type::find($id);
+
+        $type->name = Request::get('name');
+        $type->image = Request::get('image');
+        $type->isActive = Request::get('isActive');
+
+        $type->update();
+
+        return redirect('admin/types');
     }
 
     public function basket()
     {
-        return view('admin.types.basket');
-    }
-
-    public function basketClear()
-    {
-        return null;
+        $types = Type::onlyTrashed()->get();
+        return view('admin.types.basket', compact('types'));
     }
 
     public function basketDelete()
     {
-        return null;
+        $type = Type::onlyTrashed()->find(Request::get('data_id'));
+        return strval($type->forceDelete());
     }
 
     public function basketRecover()
     {
-        return null;
+        $type = Type::onlyTrashed()->find(Request::get('date_id'));
+        return strval($type->restore());
+    }
+
+    public function basketClear()
+    {
+        return strval(Type::onlyTrashed()->forceDeelete());
     }
 }

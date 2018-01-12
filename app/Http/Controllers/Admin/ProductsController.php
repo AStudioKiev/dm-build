@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Product;
+
 class ProductsController extends Controller
 {
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     public function addIndex()
@@ -19,36 +22,54 @@ class ProductsController extends Controller
 
     public function add()
     {
-        return null;
+        Product::create(Request::all());
+        return redirect('admin/products');
     }
 
     public function editIndex($id)
     {
-        return view('admin.products.edit');
+        $product = Product::find($id);
+        return view('admin.products.edit', compact('product'));
     }
 
     public function edit($id)
     {
-        return null;
+        $product = Product::find($id);
+
+        $product->name = Request::get('name');
+        $product->image = Request::get('image');
+        $product->description = Request::get('description');
+        $product->colors = Request::get('colors');
+        $product->type = Request::get('type');
+        $product->subtype = Request::get('subtype');
+        $product->code = Request::get('code');
+        $product->price = Request::get('price');
+
+        $product->update();
+
+        return redirect('admin/products');
     }
 
     public function basket()
     {
-        return view('admin.products.basket');
-    }
-
-    public function basketClear()
-    {
-        return null;
+        $products = Product::onlyTrashed()->get();
+        return view('admin.banner.basket', compact('products'));
     }
 
     public function basketDelete()
     {
-        return null;
+        $banner = Product::onlyTrashed()->find(Request::get('data_id'));
+        return strval($banner->forceDelete());
     }
 
     public function basketRecover()
     {
-        return null;
+        $banner = Product::onlyTrashed()->find(Request::get('date_id'));
+        return strval($banner->restore());
+    }
+
+    public function basketClear()
+    {
+        return strval(Product::onlyTrashed()->forceDeelete());
     }
 }

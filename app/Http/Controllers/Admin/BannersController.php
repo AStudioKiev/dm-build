@@ -9,13 +9,6 @@ use App\Banner;
 
 class BannersController extends Controller
 {
-    private $banner;
-
-    public function __construct()
-    {
-        $this->banner = new Banner();
-    }
-
     public function index()
     {
         $banners = Banner::all();
@@ -29,14 +22,13 @@ class BannersController extends Controller
 
     public function add()
     {
-        $banner = new Banner();
-        $banner->create(Request::all());
+        Banner::create(Request::all());
         return redirect('admin/banners');
     }
 
     public function editIndex($id)
     {
-        $banner = $this->banner->find($id);
+        $banner = Banner::find($id);
         return view('admin.banner.edit', compact('banner'));
     }
 
@@ -48,26 +40,31 @@ class BannersController extends Controller
         $banner->image = Request::get('image');
         $banner->isActive = Request::get('isActive');
 
-        $banner->save();
+        $banner->update();
+
+        return redirect('admin/banners');
     }
 
     public function basket()
     {
-        return view('admin.banner.basket');
-    }
-
-    public function basketClear()
-    {
-        return null;
+        $banners = Banner::onlyTrashed()->get();
+        return view('admin.banner.basket', compact('banners'));
     }
 
     public function basketDelete()
     {
-        return null;
+        $banner = Banner::onlyTrashed()->find(Request::get('data_id'));
+        return strval($banner->forceDelete());
     }
 
     public function basketRecover()
     {
-        return null;
+        $banner = Banner::onlyTrashed()->find(Request::get('date_id'));
+        return strval($banner->restore());
+    }
+
+    public function basketClear()
+    {
+        return strval(Banner::onlyTrashed()->forceDeelete());
     }
 }

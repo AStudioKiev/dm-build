@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Type withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Type withoutTrashed()
  * @mixin \Eloquent
+ * @property \Carbon\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Type whereDeletedAt($value)
  */
 class Type extends Model
 {

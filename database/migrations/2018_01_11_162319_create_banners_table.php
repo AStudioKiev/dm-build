@@ -18,6 +18,7 @@ class CreateBannersTable extends Migration
 
             $table->string('name')->nullable();
             $table->string('image');
+            $table->boolean('isActive');
 
             $table->timestamps();
             $table->softDeletes();

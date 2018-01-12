@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Banner
@@ -20,8 +21,21 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Banner whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Banner whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $isActive
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\App\Banner onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Banner whereIsActive($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Banner withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Banner withoutTrashed()
  */
 class Banner extends Model
 {
-    //
+    use SoftDeletes;
+
+    protected $fillable = [
+        'name'
+    ];
+
+    protected $dates = ['deleted_at'];
 }

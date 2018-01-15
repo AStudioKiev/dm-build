@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBannersTable extends Migration
+class CreatePostersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBannersTable extends Migration
      */
     public function up()
     {
-        Schema::create('banners', function (Blueprint $table) {
+        Schema::create('posters', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('name')->nullable();
             $table->string('image');
-            $table->boolean('isActive');
+            $table->boolean('isActive')->default(false);
 
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +32,9 @@ class CreateBannersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banners');
+        Schema::dropIfExists('posters');
+        if (file_exists(public_path() . '/uploads/posters'))
+            foreach (glob(public_path() . '/uploads/posters/*') as $file)
+                unlink($file);
     }
 }

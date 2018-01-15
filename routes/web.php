@@ -7,18 +7,20 @@ Route::get('/', 'MainController@index');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/', 'Admin\IndexController@index');
 
-    Route::group(['prefix' => 'banners'], function (){
-        Route::get('/', 'Admin\BannersController@index');
-        Route::get('/add', 'Admin\BannersController@addIndex');
-        Route::post('/add', 'Admin\BannersController@add');
-        Route::get('/edit/{id}', 'Admin\BannersController@editIndex');
-        Route::post('/edit/{id}', 'Admin\BannersController@edit');
+    Route::group(['prefix' => 'posters'], function (){
+        Route::get('/', 'Admin\PostersController@index');
+        Route::get('/add', 'Admin\PostersController@addIndex');
+        Route::post('/add', 'Admin\PostersController@add');
+        Route::get('/edit/{id}', 'Admin\PostersController@editIndex');
+        Route::post('/edit/{id}', 'Admin\PostersController@edit');
+        Route::post('/delete', 'Admin\PostersController@delete');
+        Route::post('/activate', 'Admin\PostersController@activate');
 
         Route::group(['prefix' => 'basket'], function (){
-            Route::get('/', 'Admin\BannersController@basket');
-            Route::post('/delete', 'Admin\BannersController@basketDelete');
-            Route::post('/recover', 'Admin\BannersController@basketRecover');
-            Route::post('/clear', 'Admin\BannersController@basketClear');
+            Route::get('/', 'Admin\PostersController@basket');
+            Route::post('/delete', 'Admin\PostersController@basketDelete');
+            Route::post('/recover', 'Admin\PostersController@basketRecover');
+            Route::post('/clear', 'Admin\PostersController@basketClear');
         });
     });
 

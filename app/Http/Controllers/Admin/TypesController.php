@@ -59,7 +59,7 @@ class TypesController extends Controller
 
     public function basketRecover()
     {
-        $type = Type::onlyTrashed()->find(Request::get('date_id'));
+        $type = Type::onlyTrashed()->find(Request::get('data_id'));
         return strval($type->restore());
     }
 

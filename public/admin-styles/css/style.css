@@ -180,7 +180,7 @@ a, a:hover, a:focus {
     -moz-transition: ease 0.4s;
     -o-transition: ease 0.4s;
     transition: ease 0.4s;
-    
+
     color: #fff;
     background-color: #6ace6a;
 }
@@ -205,7 +205,7 @@ a, a:hover, a:focus {
     -moz-transition: ease 0.4s;
     -o-transition: ease 0.4s;
     transition: ease 0.4s;
-    
+
     text-decoration: underline;
     color: #003db1;
 }
@@ -246,7 +246,7 @@ textarea::-moz-placeholder { font-size: 20px; text-align: center; }
 textarea::-webkit-input-placeholder { font-size: 20px; text-align: center; }
 textarea:-ms-input-placeholder { font-size: 20px; text-align: center; }
 textarea::-ms-input-placeholder { font-size: 20px; text-align: center; }
-textarea::placeholder { font-size: 20px; text-align: center; } 
+textarea::placeholder { font-size: 20px; text-align: center; }
 
 .image-load-holder {
     border-top: 2px solid rgba(74, 74, 74, 0.8);
@@ -375,80 +375,37 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     width: 18%;
 }
 
-.page-comment-table, .page-comment-table th, .page-comment-table td {
+.posters-table, .posters-table th, .posters-table td {
     border: 2px solid #000;
 }
-.page-comment-table>thead>tr>th {
+.posters-table>thead>tr>th {
     border-color: #000;
     font-weight: 400;
     text-align: center;
     font-size: 18px;
 }
-.page-comment-table>thead>tr>th:nth-child(1) {
-    width: 5%;
-}
-.page-comment-table>thead>tr>th:nth-child(2) {
-    width: 15%;
-}
-.page-comment-table>thead>tr>th:nth-child(3) {
-    width: 20%;
-}
-.page-comment-table>thead>tr>th:nth-child(4) {
-    width: 30%;
-}
-.page-comment-table>thead>tr>th:nth-child(5) {
-    width: 15%;
-}
-.page-comment-table>thead>tr>th:nth-child(6) {
-    width: 15%;
-}
-
-.lesson-table>thead>tr>th, .lesson-table>tbody>tr>td {
-    width: 14.286%!important;
-}
-.lesson-input {
-    width: 100%;
-    height: 35px;
-    margin: 7px auto;
-    padding-left: 10px;
-    border-radius: 5px;
-    border-top: 2px solid rgba(74, 74, 74, 0.8);
-    border-right: 2px solid rgba(112, 112, 112, 0.8);
-    border-bottom: 0;
-    border-left: 0;
-    font-size: 16px;
-}
-.admin-table>tbody>tr>td {
+.posters-table>tbody>tr>td {
     height: 100px;
     vertical-align: middle;
 }
-.admin-table>tbody>tr>td:nth-child(1) {
+.posters-table>thead>tr>th:nth-child(1) {
     width: 5%;
-    font-size: 12px;
 }
-.admin-table>tbody>tr>td:nth-child(2) {
+.posters-table>thead>tr>th:nth-child(2) {
+    width: 50%;
+}
+.posters-table>thead>tr>th:nth-child(3) {
+    width: 15%;
+}
+.posters-table>thead>tr>th:nth-child(4) {
     width: 10%;
-    font-size: 12px;
 }
-.admin-table>tbody>tr>td:nth-child(3) {
-    font-size: 10px;
-    text-align: justify;
-    width: 25%;
-}
-.admin-table>tbody>tr>td:nth-child(4) {
-    width: 14%;
-}
-.admin-table>tbody>tr>td:nth-child(5) {
+.posters-table>thead>tr>th:nth-child(5) {
     width: 10%;
-    font-size: 18px;
 }
-.admin-table>tbody>tr>td:nth-child(6) {
-    width: 18%;
+.posters-table>thead>tr>th:nth-child(6) {
+    width: 10%;
 }
-.admin-table>tbody>tr>td:nth-child(7) {
-    width: 18%;
-}
-
 
 .action-admin {
     font-size: 18px;
@@ -460,7 +417,7 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     -moz-transition: all 550ms ease;
     -o-transition: all 550ms ease;
     transition: all 550ms ease;
-    
+
     text-decoration: underline;
     color: #3f5cb9;
 }
@@ -482,7 +439,7 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     -moz-transition: all 550ms ease;
     -o-transition: all 550ms ease;
     transition: all 550ms ease;
-    
+
     background-color: #ffd95c;
 }
 

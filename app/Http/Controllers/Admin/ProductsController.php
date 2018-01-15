@@ -64,7 +64,7 @@ class ProductsController extends Controller
 
     public function basketRecover()
     {
-        $banner = Product::onlyTrashed()->find(Request::get('date_id'));
+        $banner = Product::onlyTrashed()->find(Request::get('data_id'));
         return strval($banner->restore());
     }
 

@@ -10,7 +10,7 @@
         <a href="{{url('admin/types')}}">
             <button id="blogBtn" name="add-new-btn" class="add-new-btn">Управление типами товаров</button>
         </a>
-        <a href="{{url('admin/banners')}}">
+        <a href="{{url('admin/posters')}}">
             <button id="blogBtn" name="add-new-btn" class="add-new-btn">Управление банерами</button>
         </a>
     </div>

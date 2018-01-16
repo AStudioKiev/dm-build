@@ -5,6 +5,13 @@ Auth::routes();
 Route::get('/', 'MainController@index');
 Route::post('/getSubtypes', 'MainController@getSubtypes');
 
+Route::group(['prefix' => 'catalog'], function() {
+    Route::get('/', 'FiltersController@index');
+    Route::get('/{type}', 'FiltersController@getTypeIndex');
+    Route::get('/{type}/{subtype}', 'FiltersController@getSubtypeIndex');
+    Route::get('/{type}/{subtype}/{product_id}', 'FiltersController@getProductIndex');
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/', 'Admin\IndexController@index');
 

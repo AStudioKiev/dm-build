@@ -31,11 +31,11 @@ class PostersController extends Controller
                 $name = $this->getRandomName();
                 $name .= substr($_FILES['image']['name'], strrpos($_FILES['image']['name'], '.'));
 
-            } while(file_exists(public_path() . '/uploads/banners/' . $name));
+            } while(file_exists(public_path() . '/uploads/posters/' . $name));
 
             $file = Request::file('image');
-            $file->move(public_path() . '/uploads/banners/', $name);
-            $inputs['image'] = '/uploads/banners/' . $name;
+            $file->move(public_path() . '/uploads/posters/', $name);
+            $inputs['image'] = '/uploads/posters/' . $name;
         }
 
         Poster::create($inputs);
@@ -91,6 +91,9 @@ class PostersController extends Controller
     public function basketDelete()
     {
         $poster = Poster::onlyTrashed()->find(Request::get('data_id'));
+
+        unlink(public_path() . $poster->image);
+
         return strval($poster->forceDelete());
     }
 
@@ -105,7 +108,10 @@ class PostersController extends Controller
         $posters = Poster::onlyTrashed()->get();
 
         foreach ($posters as $poster)
+        {
+            unlink(public_path() . $poster->image);
             $poster->forceDelete();
+        }
 
         return strval(true);
     }

@@ -58,18 +58,29 @@ class ProductsController extends Controller
 
     public function basketDelete()
     {
-        $banner = Product::onlyTrashed()->find(Request::get('data_id'));
-        return strval($banner->forceDelete());
+        $product = Product::onlyTrashed()->find(Request::get('data_id'));
+
+        unlink(public_path() . $product->image);
+
+        return strval($product->forceDelete());
     }
 
     public function basketRecover()
     {
-        $banner = Product::onlyTrashed()->find(Request::get('data_id'));
-        return strval($banner->restore());
+        $product = Product::onlyTrashed()->find(Request::get('data_id'));
+        return strval($product->restore());
     }
 
     public function basketClear()
     {
-        return strval(Product::onlyTrashed()->forceDeelete());
+        $products = Poster::onlyTrashed()->get();
+
+        foreach ($products as $product)
+        {
+            unlink(public_path() . $product->image);
+            $product->forceDelete();
+        }
+
+        return strval(true);
     }
 }

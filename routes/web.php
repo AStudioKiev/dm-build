@@ -31,13 +31,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::get('/edit/{id}', 'Admin\TypesController@editIndex');
         Route::post('/edit/{id}', 'Admin\TypesController@edit');
         Route::post('/delete', 'Admin\TypesController@delete');
-
-        Route::group(['prefix' => 'basket'], function (){
-            Route::get('/', 'Admin\TypesController@basket');
-            Route::post('/delete', 'Admin\TypesController@basketDelete');
-            Route::post('/recover', 'Admin\TypesController@basketRecover');
-            Route::post('/clear', 'Admin\TypesController@basketClear');
-        });
     });
 
     Route::group(['prefix' => 'products'], function (){

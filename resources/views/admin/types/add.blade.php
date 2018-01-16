@@ -10,7 +10,13 @@
                     <input type="text" name="name" required placeholder="Название" class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="parrent_id" placeholder="Родитель" class="form-control input-field">
+                    <select name="parent_id">
+                        <option disabled>Выберите родительский тип</option>
+                        <option selected value="NULL">Отсутствует</option>
+                        @foreach($parentTypes as $parentType)
+                            <option value="{{$parentType->id}}">{{$parentType->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 

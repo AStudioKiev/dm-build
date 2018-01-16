@@ -12,24 +12,41 @@ class TypesController extends Controller
     public function index()
     {
         $types = Type::all();
+
+        foreach ($types as $type)
+        {
+            if($type->parent_id !== null)
+            {
+                $parentType = Type::find($type->parent_id);
+                $type->parent_id = $parentType->name;
+            }
+        }
+
         return view('admin.types.index', compact('types'));
     }
 
     public function addIndex()
     {
-        return view('admin.types.add');
+        $parentTypes = Type::whereNull('parent_id')->get();
+        return view('admin.types.add', compact('parentTypes'));
     }
 
     public function add()
     {
-        Type::create(Request::all());
+        if(Request::get('parent_id') !== 'NULL')
+            Type::create(Request::all());
+        else
+            Type::create(['name' => Request::get('name')]);
+
         return redirect('admin/types');
     }
 
     public function editIndex($id)
     {
         $type = Type::find($id);
-        return view('admin.types.edit', compact('type'));
+        $parentTypes = Type::whereNull('parent_id')->get();
+
+        return view('admin.types.edit', compact('type', 'parentTypes'));
     }
 
     public function edit($id)
@@ -37,7 +54,7 @@ class TypesController extends Controller
         $type = Type::find($id);
 
         $type->name = Request::get('name');
-        $type->parrent_id = Request::get('parrent_id');
+        $type->parent_id = Request::get('parent_id');
 
         $type->update();
 
@@ -46,34 +63,12 @@ class TypesController extends Controller
 
     public function delete()
     {
-        return Type::destroy(Request::get('data_id'));
-    }
+        $type = Type::find(Request::get('data_id'));
+        $childsCount = Type::where('parent_id', $type->id)->count();
 
-    public function basket()
-    {
-        $types = Type::onlyTrashed()->get();
-        return view('admin.types.basket', compact('types'));
-    }
-
-    public function basketDelete()
-    {
-        $type = Type::onlyTrashed()->find(Request::get('data_id'));
-        return strval($type->forceDelete());
-    }
-
-    public function basketRecover()
-    {
-        $type = Type::onlyTrashed()->find(Request::get('data_id'));
-        return strval($type->restore());
-    }
-
-    public function basketClear()
-    {
-        $types = Type::onlyTrashed()->get();
-
-        foreach ($types as $type)
-            $type->forceDelete();
-
-        return strval(true);
+        if($childsCount == 0)
+            return Type::destroy(Request::get('data_id'));
+        else
+            return 'parent';
     }
 }

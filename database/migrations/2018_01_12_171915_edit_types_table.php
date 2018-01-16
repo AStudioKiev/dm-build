@@ -14,7 +14,7 @@ class EditTypesTable extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE types ADD FOREIGN KEY (parrent_id) REFERENCES types(id);');
+        DB::statement('ALTER TABLE types ADD FOREIGN KEY (parent_id) REFERENCES types(id);');
     }
 
     /**

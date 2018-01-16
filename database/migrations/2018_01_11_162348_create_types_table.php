@@ -16,10 +16,9 @@ class CreateTypesTable extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('parrent_id')->unsigned()->nullable();
+            $table->integer('parent_id')->unsigned()->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

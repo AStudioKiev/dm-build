@@ -11,9 +11,6 @@
             <a href="{{url('admin/types/add')}}">
                 <button id="addNewBtn" name="add-new-btn" class="add-new-btn">Добавить новый тип</button>
             </a>
-            <a href="{{url('admin/types/basket')}}">
-                <button id="basketBtn" name="add-new-btn" class="add-new-btn">Корзина</button>
-            </a>
             <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -29,7 +26,7 @@
                 <tr>
                     <td>{{$type->id}}</td>
                     <td>{{$type->name}}</td>
-                    <td>{{$type->parrent_id}}</td>
+                    <td>{{$type->parent_id}}</td>
                     <td class="admin-item green-item edit-item">
                         <a href="{{url('admin/types/edit', $type->id)}}">Редактировать</a>
                     </td>
@@ -94,8 +91,10 @@
                     console.log('err: ', result);
                 },
                 success: function (result) {
-                    if(action === 'delete')
-                    {
+                    console.log(result);
+                    if(result === 'parent') {
+                        alert('Нельзя удалить родительский тип(существуют зависящие подтипы)');
+                    } else if(action === 'delete') {
                         var el = 'td[data-id=' + data['data_id'] + ']';
                         $(el).parent().remove();
                     }

@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::post('/add', 'Admin\TypesController@add');
         Route::get('/edit/{id}', 'Admin\TypesController@editIndex');
         Route::post('/edit/{id}', 'Admin\TypesController@edit');
+        Route::post('/delete', 'Admin\TypesController@delete');
 
         Route::group(['prefix' => 'basket'], function (){
             Route::get('/', 'Admin\TypesController@basket');

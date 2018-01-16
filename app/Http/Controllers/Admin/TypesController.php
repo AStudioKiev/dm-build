@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Request;
 
 use App\Type;
 
@@ -37,12 +37,16 @@ class TypesController extends Controller
         $type = Type::find($id);
 
         $type->name = Request::get('name');
-        $type->image = Request::get('image');
-        $type->isActive = Request::get('isActive');
+        $type->parrent_id = Request::get('parrent_id');
 
         $type->update();
 
         return redirect('admin/types');
+    }
+
+    public function delete()
+    {
+        return Type::destroy(Request::get('data_id'));
     }
 
     public function basket()
@@ -65,6 +69,11 @@ class TypesController extends Controller
 
     public function basketClear()
     {
-        return strval(Type::onlyTrashed()->forceDeelete());
+        $types = Type::onlyTrashed()->get();
+
+        foreach ($types as $type)
+            $type->forceDelete();
+
+        return strval(true);
     }
 }

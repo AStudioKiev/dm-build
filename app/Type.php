@@ -10,7 +10,7 @@ class Type extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name'
+        'name', 'parrent_id'
     ];
 
     protected $dates = ['deleted_at'];

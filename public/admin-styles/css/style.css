@@ -407,6 +407,38 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     width: 10%;
 }
 
+.products-table, .products-table th, .products-table td {
+    border: 2px solid #000;
+}
+.products-table>thead>tr>th {
+    border-color: #000;
+    font-weight: 400;
+    text-align: center;
+    font-size: 18px;
+}
+.products-table>tbody>tr>td {
+    height: 100px;
+    vertical-align: middle;
+}
+.products-table>thead>tr>th:nth-child(1) {
+    width: 5%;
+}
+.products-table>thead>tr>th:nth-child(2) {
+    width: 10%;
+}
+.products-table>thead>tr>th:nth-child(3) {
+    width: 25%;
+}
+.products-table>thead>tr>th:nth-child(4) {
+    width: 30%;
+}
+.products-table>thead>tr>th:nth-child(5) {
+    width: 15%;
+}
+.products-table>thead>tr>th:nth-child(6) {
+    width: 15%;
+}
+
 .types-table, .types-table th, .types-table td {
     border: 2px solid #000;
 }

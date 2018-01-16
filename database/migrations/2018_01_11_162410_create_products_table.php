@@ -20,9 +20,9 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('description');
             $table->string('short_description');
-            $table->string('code');
-            $table->string('colors');
-            $table->integer('price');
+            $table->string('code')->nullable();
+            $table->string('colors')->nullable();
+            $table->float('price');
             $table->integer('type')->unsigned();
             $table->integer('subtype')->unsigned();
 

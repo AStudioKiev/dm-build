@@ -3,6 +3,7 @@
 Auth::routes();
 
 Route::get('/', 'MainController@index');
+Route::post('/getSubtypes', 'MainController@getSubtypes');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/', 'Admin\IndexController@index');
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::post('/add', 'Admin\ProductsController@add');
         Route::get('/edit/{id}', 'Admin\ProductsController@editIndex');
         Route::post('/edit/{id}', 'Admin\ProductsController@edit');
+        Route::post('/delete', 'Admin\ProductsController@delete');
 
         Route::group(['prefix' => 'basket'], function (){
             Route::get('/', 'Admin\ProductsController@basket');

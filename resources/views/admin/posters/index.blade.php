@@ -87,15 +87,10 @@
             };
 
             var action = $('#modal-yes').attr('data-action');
-            var url = '';
+            var url = "{{url('admin/posters')}}";
+            url += '/' + action;
 
-            if(action === 'activate')
-                url = "{{url('admin/posters/activate')}}";
-            else if(action === 'delete')
-                url = "{{url('admin/posters/delete')}}";
-
-            if(url !== '')
-                sendPOST(data, url, action);
+            sendPOST(data, url, action);
 
         });
 

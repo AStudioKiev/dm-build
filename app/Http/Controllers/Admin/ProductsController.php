@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Request;
 
 use App\Product;
+use App\Type;
 
 class ProductsController extends Controller
 {
@@ -17,19 +18,38 @@ class ProductsController extends Controller
 
     public function addIndex()
     {
-        return view('admin.products.add');
+        $parentTypes = Type::whereNull('parent_id')->get();
+        return view('admin.products.add', compact('parentTypes'));
     }
 
     public function add()
     {
-        Product::create(Request::all());
+        $inputs = Request::all();
+
+        if(Request::hasFile('image'))
+        {
+            do {
+                $name = $this->getRandomName();
+                $name .= substr($_FILES['image']['name'], strrpos($_FILES['image']['name'], '.'));
+
+            } while(file_exists(public_path() . '/uploads/products/' . $name));
+
+            $file = Request::file('image');
+            $file->move(public_path() . '/uploads/products/', $name);
+            $inputs['image'] = '/uploads/products/' . $name;
+        }
+
+        Product::create($inputs);
         return redirect('admin/products');
     }
 
     public function editIndex($id)
     {
         $product = Product::find($id);
-        return view('admin.products.edit', compact('product'));
+        $parentTypes = Type::whereNull('parent_id')->get();
+        $childTypes = Type::where('parent_id', $product->type)->get();
+
+        return view('admin.products.edit', compact('product', 'parentTypes', 'childTypes'));
     }
 
     public function edit($id)
@@ -37,7 +57,6 @@ class ProductsController extends Controller
         $product = Product::find($id);
 
         $product->name = Request::get('name');
-        $product->image = Request::get('image');
         $product->description = Request::get('description');
         $product->colors = Request::get('colors');
         $product->type = Request::get('type');
@@ -45,15 +64,30 @@ class ProductsController extends Controller
         $product->code = Request::get('code');
         $product->price = Request::get('price');
 
+        if(Request::hasFile('image'))
+        {
+            $pos = strrpos($product->image, '/');
+            $path = substr($product->image, 0, $pos);
+            $name = substr($product->image, $pos, strlen($product->image));
+
+            $file = Request::file('image');
+            $file->move(public_path() . $path, $name);
+        }
+
         $product->update();
 
         return redirect('admin/products');
     }
 
+    public function delete()
+    {
+        return Product::destroy(Request::get('data_id'));
+    }
+
     public function basket()
     {
         $products = Product::onlyTrashed()->get();
-        return view('admin.banner.basket', compact('products'));
+        return view('admin.products.basket', compact('products'));
     }
 
     public function basketDelete()
@@ -73,7 +107,7 @@ class ProductsController extends Controller
 
     public function basketClear()
     {
-        $products = Poster::onlyTrashed()->get();
+        $products = Product::onlyTrashed()->get();
 
         foreach ($products as $product)
         {
@@ -82,5 +116,16 @@ class ProductsController extends Controller
         }
 
         return strval(true);
+    }
+
+    private function getRandomName()
+    {
+        $str = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+        $name = '';
+
+        for ($i = 0; $i < 22; $i++)
+            $name .= $str[mt_rand(0, 71)];
+
+        return $name;
     }
 }

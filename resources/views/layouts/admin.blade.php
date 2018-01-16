@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    @yield('head-start')
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +18,7 @@
 
     <script src="{{ asset('admin-styles/js/jquery.js') }}"></script>
     <script src="{{ asset('admin-styles/js/bootstrap.min.js') }}"></script>
+    @yield('head-end')
 </head>
 
 <body>

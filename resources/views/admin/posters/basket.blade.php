@@ -38,6 +38,9 @@
             @endforeach
             </tbody>
         </table>
+        <div class="paginate-links">
+            {!! $posters->links(); !!}
+        </div>
     </div>
 
     <!-- Modal -->

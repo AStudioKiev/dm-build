@@ -12,7 +12,7 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
@@ -86,7 +86,7 @@ class ProductsController extends Controller
 
     public function basket()
     {
-        $products = Product::onlyTrashed()->get();
+        $products = Product::onlyTrashed()->paginate(10);
         return view('admin.products.basket', compact('products'));
     }
 

@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Request;
 
 use App\Type;
+use App\Product;
 
 class TypesController extends Controller
 {
     public function index()
     {
-        $types = Type::all();
+        $types = Type::paginate(10);
 
         foreach ($types as $type)
         {
@@ -65,10 +66,14 @@ class TypesController extends Controller
     {
         $type = Type::find(Request::get('data_id'));
         $childsCount = Type::where('parent_id', $type->id)->count();
+        $productsCount = Product::where('type', $type->id)->count();
+        $productsCount += Product::where('subtype', $type->id)->count();
 
-        if($childsCount == 0)
-            return Type::destroy(Request::get('data_id'));
+        if($childsCount != 0)
+            return 'childs';
+        else if($productsCount != 0)
+            return 'products';
         else
-            return 'parent';
+            return Type::destroy(Request::get('data_id'));
     }
 }

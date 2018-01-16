@@ -12,7 +12,7 @@ class PostersController extends Controller
 {
     public function index()
     {
-        $posters = Poster::all();
+        $posters = Poster::paginate(10);
         return view('admin.posters.index', compact('posters'));
     }
 
@@ -84,7 +84,7 @@ class PostersController extends Controller
 
     public function basket()
     {
-        $posters = Poster::onlyTrashed()->get();
+        $posters = Poster::onlyTrashed()->paginate(10);
         return view('admin.posters.basket', compact('posters'));
     }
 

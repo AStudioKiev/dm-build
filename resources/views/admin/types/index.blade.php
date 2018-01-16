@@ -35,6 +35,9 @@
             @endforeach
             </tbody>
         </table>
+        <div class="paginate-links">
+            {!! $types->links(); !!}
+        </div>
     </div>
 
     <!-- Modal -->
@@ -60,47 +63,49 @@
 
 @section('js-section')
 
-    <script>
-        $('.delete-item').on( "click", function() {
-            $('.modal-title').text('Удалить тип?');
-            $('#modal-yes').attr("data-id", $(this).attr('data-id'));
-            $('#modal-yes').attr('data-action', 'delete');
-        });
+<script>
+    $('.delete-item').on( "click", function() {
+        $('.modal-title').text('Удалить тип?');
+        $('#modal-yes').attr("data-id", $(this).attr('data-id'));
+        $('#modal-yes').attr('data-action', 'delete');
+    });
 
-        $('#modal-yes').on( "click", function() {
-            var data = {
-                data_id: $(this).attr('data-id'),
-                _token: $("input[name*='_token']").val()
-            };
+    $('#modal-yes').on( "click", function() {
+        var data = {
+            data_id: $(this).attr('data-id'),
+            _token: $("input[name*='_token']").val()
+        };
 
-            var action = $('#modal-yes').attr('data-action');
-            var url = "{{url('admin/types')}}";
-            url += '/' + action;
+        var action = $('#modal-yes').attr('data-action');
+        var url = "{{url('admin/types')}}";
+        url += '/' + action;
 
-            sendPOST(data, url, action);
+        sendPOST(data, url, action);
 
-        });
+    });
 
-        function sendPOST(data, url, action)
-        {
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: data,
-                error: function (result) {
-                    console.log('err: ', result);
-                },
-                success: function (result) {
-                    console.log(result);
-                    if(result === 'parent') {
-                        alert('Нельзя удалить родительский тип(существуют зависящие подтипы)');
-                    } else if(action === 'delete') {
-                        var el = 'td[data-id=' + data['data_id'] + ']';
-                        $(el).parent().remove();
-                    }
+    function sendPOST(data, url, action)
+    {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            error: function (result) {
+                console.log('err: ', result);
+            },
+            success: function (result) {
+                console.log(result);
+                if(result === 'childs') {
+                    alert('Нельзя удалить тип(существуют зависящие подтипы!)');
+                } else if(result === 'products') {
+                    alert('Нельзя удалить тип(существуют зависящие товары!)');
+                } else if(action === 'delete') {
+                    var el = 'td[data-id=' + data['data_id'] + ']';
+                    $(el).parent().remove();
                 }
-            });
-        }
-    </script>
+            }
+        });
+    }
+</script>
 
 @stop

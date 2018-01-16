@@ -39,6 +39,9 @@
             @endforeach
             </tbody>
         </table>
+        <div class="paginate-links">
+            {!! $products->links(); !!}
+        </div>
     </div>
 
     <!-- Modal -->

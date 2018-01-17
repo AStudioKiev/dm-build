@@ -3,6 +3,17 @@
 Auth::routes();
 
 Route::get('/', 'MainController@index');
+
+Route::get('/type_catalog', 'MainController@type_catalog');
+Route::get('/full_catalog', 'MainController@full_catalog');
+Route::get('/cart', 'MainController@cart');
+
+Route::get('/contacts', 'MainController@contacts');
+Route::get('/delivery', 'MainController@delivery');
+Route::get('/diller', 'MainController@diller');
+Route::get('/pricelist', 'MainController@pricelist');
+Route::get('/product', 'MainController@product');
+
 Route::post('/getSubtypes', 'MainController@getSubtypes');
 
 Route::group(['prefix' => 'catalog'], function() {

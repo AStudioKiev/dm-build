@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    @yield('head-sart')
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,13 +10,14 @@
     <title>Astudio</title>
 
     <meta name="theme-color" content="#ffffff">
-    
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <script src="js/jquery.js"></script>
     <script src="js/jquery.appear.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    @yield('head-end')
 </head>
 
 <body>
@@ -52,7 +54,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container-md">
         <div id="topCarousel" class="carousel slide" data-ride="carousel">
             <div class="orange-nav-holder">
@@ -66,7 +68,7 @@
                     <li><a href="#">Контакты</a></li>
                 </ul>
             </div>
-            
+
             <ol class="carousel-indicators">
                 <li data-target="#topCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#topCarousel" data-slide-to="1"></li>
@@ -88,7 +90,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container-md mar-tp-4 mar-bt-4">
         <div class="catalog-sm-container space-btw">
             <div class="category-card">
@@ -148,7 +150,7 @@
                 </div>
             </div>
         </div>
-       
+
         <div class="feedback-container">
             <form action="contactForm.php" method="post" id="contactForm" class="form">
                 <div class="select-wrapper">
@@ -166,7 +168,7 @@
                 <input type="submit" role="button" class="orange-btn" value="Заказать обратный звонок">
             </form>
         </div>
-        
+
         <div class="about-container">
             <div class="image-text-holder space-btw">
                 <div class="image-holder"><img src="img/kotl_info.jpg" alt="" width="100%"></div>
@@ -209,25 +211,25 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="delivery-container">
             <div class="grey-border">
                 <div class="md-header">
                     <h3>Оформить заказ просто</h3>
                 </div>
-                
+
                 <div class="delivery-stages-holder">
                     <img src="img/delivery.png" alt="" width="100%">
                 </div>
             </div>
         </div>
-        
+
         <div class="partners-container">
             <div class="grey-border">
                 <div class="md-header">
                     <h3>Наши партнёры</h3>
                 </div>
-                
+
                 <div class="space-btw pad-bt-4">
                     <div class="partner-holder">
                         <div class="partner-logo"><img src="img/1.JPG" alt="" width="100%"></div>
@@ -264,13 +266,13 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="contacts-container">
             <div class="grey-border">
                 <div class="md-header">
                     <h3>Контакты</h3>
                 </div>
-                
+
                 <div class="space-btw pad-vl-6">
                     <div class="contacts-info">
                         <div class="contact-point">
@@ -294,17 +296,18 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="map-holder">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10165.110045866442!2d30.45826133127441!3d50.43593139373317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce9889498f69%3A0xe6a9e0d555f1bade!2z0KHRg9C_0YPRgtC90LjQug!5e0!3m2!1suk!2sua!4v1516019775571" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="footer"><span>Сайт сделан web-site.kiev.ua</span></div>
     </div>
 </body>
-    
+
 <script src="js/mine.js"></script>
+
 </html>

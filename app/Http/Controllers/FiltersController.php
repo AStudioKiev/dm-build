@@ -9,6 +9,12 @@ use App\Type;
 
 class FiltersController extends Controller
 {
+    public function index()
+    {
+        $types = Type::whereNull('parent_id')->get();
+        return view('type_catalog', compact('types'));
+    }
+
     public function full_catalog()
     {
         return view('full_catalog');
@@ -17,10 +23,6 @@ class FiltersController extends Controller
     public function cart()
     {
         return view('cart');
-    }
-    public function index()
-    {
-        return view('type_catalog');
     }
 
     public function getTypeIndex($type)

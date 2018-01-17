@@ -15,28 +15,29 @@ class FiltersController extends Controller
         return view('type_catalog', compact('types'));
     }
 
-    public function full_catalog()
-    {
-        return view('full_catalog');
-    }
-
-    public function cart()
-    {
-        return view('cart');
-    }
-
     public function getTypeIndex($type)
     {
-        $products = Product::where('type', $type)->get();
+        $products = Product::where('type', $type)->paginate(15);
+        $parent_types = Type::whereNull('parent_id')->get();
+
+        $child_types = [];
+        foreach ($parent_types as $parent_type)
+        {
+            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get();
+        }
+
+        return view('full_catalog', compact('products', 'parent_types', 'child_types', 'type'));
     }
 
     public function getSubtypeIndex($type, $subtype)
     {
-        $products = Product::where('type', $type)->where('subtype', $subtype)->get();
+        $products = Product::where('subtype', $subtype)->paginate(15);
+        return view('full_catalog', compact('products'));
     }
 
     public function getProductIndex($type, $subtype, $product_id)
     {
         $product = Product::find($product_id);
+        return view('cart');
     }
 }

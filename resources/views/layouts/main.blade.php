@@ -11,50 +11,50 @@
 
     <meta name="theme-color" content="#ffffff">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery.appear.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/jquery.appear.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     @yield('head-end')
 </head>
 
 <body>
-    <div class="arrow-left"><a href="#"><img src="img/left-arrow.png" alt="" width="100%"></a></div>
-    <div class="arrow-up"><a href="#"><img src="img/left-arrow.png" alt="" width="100%"></a></div>
+    <div class="arrow-left"><a href="#"><img src="{{asset('img/left-arrow.png')}}" alt="" width="100%"></a></div>
+    <div class="arrow-up"><a href="#"><img src="{{asset('img/left-arrow.png')}}" alt="" width="100%"></a></div>
 
     <div class="bot-shadow">
         <div class="container-md">
             <div class="white-nav space-btw">
                 <div class="logo-holder">
                     <a href="{{url('/')}}">
-                        <img src="img/logo.png" alt="logo" width="100%">
+                        <img src="{{asset('img/logo.png')}}" alt="logo" width="100%">
                     </a>
                 </div>
 
                 <div class="contact-nav space-btw">
                     <div class="contact-nav-point">
-                        <div class="contact-nav-icon"><img src="img/placeholder.png" alt="" height="100%"></div>
+                        <div class="contact-nav-icon"><img src="{{asset('img/placeholder.png')}}" alt="" height="100%"></div>
                         <div class="contact-nav-text">
                             <a href="https://goo.gl/maps/mWNqZNCWEJP2" target="_blank">г. Киев ул. Космонавтов 23</a>
                         </div>
                     </div>
                     <div class="contact-nav-point">
-                        <div class="contact-nav-icon"><img src="img/email.png" alt="" height="100%"></div>
+                        <div class="contact-nav-icon"><img src="{{asset('img/email.png')}}" alt="" height="100%"></div>
                         <div class="contact-nav-text">
                             <a href="mailto:dm-stroy@gmail.com">dm-stroy@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-nav-point">
-                        <div class="contact-nav-icon"><img src="img/telephone.png" alt="" height="100%"></div>
+                        <div class="contact-nav-icon"><img src="{{asset('img/telephone.png')}}" alt="" height="100%"></div>
                         <div class="contact-nav-text">
                             <a href="tel:+380975216574">+38 (097) 521 65 74</a>
                         </div>
                     </div>
 
                     <div class="cart-holder">
-                        <img src="img/cart.png" alt="" width="44px">
+                        <img src="{{asset('img/cart.png')}}" alt="" width="44px">
                         <div class="cart-count"><span>0</span></div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
 
 </body>
 
-<script src="js/mine.js"></script>
+<script src="{{asset('js/mine.js')}}"></script>
 @yield('js-section')
 
 </html>

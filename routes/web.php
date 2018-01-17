@@ -33,7 +33,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::get('/edit/{id}', 'Admin\PostersController@editIndex');
         Route::post('/edit/{id}', 'Admin\PostersController@edit');
         Route::post('/delete', 'Admin\PostersController@delete');
-        Route::post('/activate', 'Admin\PostersController@activate');
 
         Route::group(['prefix' => 'basket'], function (){
             Route::get('/', 'Admin\PostersController@basket');

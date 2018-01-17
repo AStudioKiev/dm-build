@@ -33,7 +33,6 @@
                         <img width="100px" height="100px" src="{{asset($poster->image)}}">
                     </td>
                     <td>{{$poster->name}}</td>
-                    <td class="admin-item green-item activate-item" data-toggle="modal" data-target="#myModal" data-id="{{$poster->id}}">Активировать</td>
                     <td class="admin-item green-item edit-item">
                         <a href="{{url('admin/posters/edit', $poster->id)}}">Редактировать</a>
                     </td>

@@ -389,21 +389,18 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     vertical-align: middle;
 }
 .posters-table>thead>tr>th:nth-child(1) {
-    width: 5%;
+    width: 10%;
 }
 .posters-table>thead>tr>th:nth-child(2) {
     width: 50%;
 }
 .posters-table>thead>tr>th:nth-child(3) {
-    width: 15%;
+    width: 20%;
 }
 .posters-table>thead>tr>th:nth-child(4) {
     width: 10%;
 }
 .posters-table>thead>tr>th:nth-child(5) {
-    width: 10%;
-}
-.posters-table>thead>tr>th:nth-child(6) {
     width: 10%;
 }
 

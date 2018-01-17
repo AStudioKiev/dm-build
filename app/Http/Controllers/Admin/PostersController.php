@@ -74,14 +74,6 @@ class PostersController extends Controller
         return Poster::destroy(Request::get('data_id'));
     }
 
-    public function activate()
-    {
-        DB::transaction(function() {
-            DB::table('posters')->where('isActive', '1')->update(['isActive' => '0']);
-            DB::table('posters')->where('id', Request::get('data_id'))->update(['isActive' => '1']);
-        });
-    }
-
     public function basket()
     {
         $posters = Poster::onlyTrashed()->paginate(10);

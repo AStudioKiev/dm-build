@@ -27,7 +27,11 @@
     <div class="bot-shadow">
         <div class="container-md">
             <div class="white-nav space-btw">
-                <div class="logo-holder"><img src="img/logo.png" alt="" width="100%"></div>
+                <div class="logo-holder">
+                    <a href="{{url('/')}}">
+                        <img src="img/logo.png" alt="logo" width="100%">
+                    </a>
+                </div>
 
                 <div class="contact-nav space-btw">
                     <div class="contact-nav-point">
@@ -62,7 +66,7 @@
         <div class="orange-nav-holder static">
             <ul class="main-nav space-btw">
                 <li><a href="{{url('/')}}">Главная</a></li>
-                <li><a href="{{url('/contacts')}}">О нас</a></li>
+                <li><a href="{{url('/aboutus')}}">О нас</a></li>
                 <li><a href="{{url('/catalog')}}">Каталог</a></li>
                 <li><a href="{{url('/pricelist')}}">Прайс-лист</a></li>
                 <li><a href="{{url('/diller')}}">Дилерам</a></li>
@@ -77,7 +81,7 @@
 
     <div class="footer">
         <a href="https://web-site.kiev.ua/" target="_blank">
-            <span>Сайт сделан web-site.kiev.ua</span>
+            <span>Created by AStudio</span>
         </a>
     </div>
 

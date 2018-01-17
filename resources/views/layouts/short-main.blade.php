@@ -27,7 +27,11 @@
     <div class="bot-shadow">
         <div class="container-md">
             <div class="white-nav space-btw">
-                <div class="logo-holder"><img src="img/logo.png" alt="" width="100%"></div>
+                <div class="logo-holder">
+                    <a href="{{url('/')}}">
+                        <img src="img/logo.png" alt="logo" width="100%">
+                    </a>
+                </div>
 
                 <div class="contact-nav space-btw">
                     <div class="contact-nav-point">
@@ -63,9 +67,9 @@
 </body>
 
 <div class="footer">
-    <span>
-        Created by <a href="https://web-site.kiev.ua/" target="_blank">AStudio web-site.kiev.ua</a>
-    </span>
+    <a href="https://web-site.kiev.ua/" target="_blank">
+        <span>Created by AStudio</span>
+    </a>
 </div>
 
 <script src="js/mine.js"></script>

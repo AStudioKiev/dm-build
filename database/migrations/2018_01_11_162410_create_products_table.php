@@ -42,5 +42,8 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
+        if (file_exists(public_path() . '/uploads/products'))
+            foreach (glob(public_path() . '/uploads/products/*') as $file)
+                unlink($file);
     }
 }

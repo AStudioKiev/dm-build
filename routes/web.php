@@ -44,12 +44,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     });
 
     Route::group(['prefix' => 'types'], function (){
-        Route::get('/', 'Admin\TypesController@index');
-        Route::get('/add', 'Admin\TypesController@addIndex');
-        Route::post('/add', 'Admin\TypesController@add');
-        Route::get('/edit/{id}', 'Admin\TypesController@editIndex');
-        Route::post('/edit/{id}', 'Admin\TypesController@edit');
+        Route::get('/', 'Admin\TypesController@typesIndex');
+        Route::get('/add', 'Admin\TypesController@addTypeIndex');
+        Route::post('/add', 'Admin\TypesController@addType');
+        Route::get('/edit/{id}', 'Admin\TypesController@editTypeIndex');
+        Route::post('/edit/{id}', 'Admin\TypesController@editType');
         Route::post('/delete', 'Admin\TypesController@delete');
+
+        Route::group(['prefix' => 'subtypes'], function (){
+            Route::get('/{id}', 'Admin\TypesController@subtypesIndex');
+            Route::get('/{id}/add', 'Admin\TypesController@addSubtypeIndex');
+            Route::post('/{id}/add', 'Admin\TypesController@addSubtype');
+            Route::get('/edit/{id}', 'Admin\TypesController@editSubtypeIndex');
+            Route::post('/edit/{id}', 'Admin\TypesController@editSubtype');
+        });
     });
 
     Route::group(['prefix' => 'products'], function (){

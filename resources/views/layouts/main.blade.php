@@ -21,6 +21,9 @@
 </head>
 
 <body>
+    <div class="arrow-left"><a href="#"><img src="img/left-arrow.png" alt="" width="100%"></a></div>
+    <div class="arrow-up"><a href="#"><img src="img/left-arrow.png" alt="" width="100%"></a></div>
+
     <div class="bot-shadow">
         <div class="container-md">
             <div class="white-nav space-btw">

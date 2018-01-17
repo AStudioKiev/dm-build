@@ -16,8 +16,8 @@ class CreateTypesTable extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('iamge')->nullable();
-            $table->string('description')->nullable();
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
             $table->integer('parent_id')->unsigned()->nullable();
 
             $table->timestamps();
@@ -32,5 +32,8 @@ class CreateTypesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('types');
+        if (file_exists(public_path() . '/uploads/types'))
+            foreach (glob(public_path() . '/uploads/types/*') as $file)
+                unlink($file);
     }
 }

@@ -4,20 +4,20 @@
     <h2 class="header-float-top">Админ панель</h2>
 
     <div class="admin-holder table-responsive">
-        <table class="table types-table">
+        <table class="table subtypes-table">
             <a href="{{url('admin')}}">
                 <button id="mainBtn" name="add-new-btn" class="add-new-btn">Главная</button>
             </a>
-            <a href="{{url('admin/types/add')}}">
-                <button id="addNewBtn" name="add-new-btn" class="add-new-btn">Добавить новый тип</button>
+            <a href="{{url('admin/types')}}">
+                <button id="blogBtn" name="add-new-btn" class="add-new-btn">Управление типами товаров</button>
+            </a>
+            <a href="{{url()->current() . '/add'}}">
+                <button id="addNewBtn" name="add-new-btn" class="add-new-btn">Добавить новый подтип</button>
             </a>
             <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Имя</th>
-                <th scope="col">Изображение</th>
-                <th scope="col">Описание</th>
-                <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -28,15 +28,8 @@
                 <tr>
                     <td>{{$type->id}}</td>
                     <td>{{$type->name}}</td>
-                    <td>
-                        <img width="100px" height="100px" src="{{asset($type->image)}}">
-                    </td>
-                    <td>{!! $type->description !!}</td>
                     <td class="admin-item green-item edit-item">
-                        <a href="{{url('admin/types/subtypes', $type->id)}}">Подтипы</a>
-                    </td>
-                    <td class="admin-item green-item edit-item">
-                        <a href="{{url('admin/types/edit', $type->id)}}">Редактировать</a>
+                        <a href="{{url('admin/types/subtypes/edit', $type->id)}}">Редактировать</a>
                     </td>
                     <td class="admin-item red-item delete-item" data-toggle="modal" data-target="#myModal" data-id="{{$type->id}}">Удалить</td>
                 </tr>

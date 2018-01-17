@@ -11,12 +11,9 @@
             {{ csrf_field() }}
             <div class="select-wrapper">
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="name" value="{{$type->name}}" required placeholder="Название" class="form-control input-field">
+                    <input type="text" name="name" required placeholder="Название" class="form-control input-field">
                 </div>
                 <div class="select-wrapper image-upload-form">
-                    <div class="image-load-holder">
-                        <img width="100%" height="100%" src="{{ asset($type->image) }}">
-                    </div>
                     <div class="select form-group upload-holder">
                         <div class="upload-fictive"><span>Choose a file</span></div>
                         <!-- 5MB limit -->
@@ -26,13 +23,11 @@
                     </div>
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <textarea id="description" rows="3" name="description" placeholder="Описание" class="textarea-field">
-                        {{$type->description}}
-                    </textarea>
+                    <textarea id="description" rows="3" name="description" placeholder="Описание" class="textarea-field"></textarea>
                 </div>
             </div>
 
-            <input type="submit" value="Редактировать">
+            <input type="submit" value="Создать">
         </form>
     </div>
 @stop

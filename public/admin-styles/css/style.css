@@ -453,19 +453,51 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     vertical-align: middle;
 }
 .types-table>thead>tr>th:nth-child(1) {
-    width: 6%;
+    width: 5%;
 }
 .types-table>thead>tr>th:nth-child(2) {
-    width: 35%;
+    width: 15%;
 }
 .types-table>thead>tr>th:nth-child(3) {
-    width: 35%;
+    width: 30%;
 }
 .types-table>thead>tr>th:nth-child(4) {
-    width: 12%;
+    width: 20%;
 }
 .types-table>thead>tr>th:nth-child(5) {
-    width: 12%;
+    width: 10%;
+}
+.types-table>thead>tr>th:nth-child(6) {
+    width: 10%;
+}
+.types-table>thead>tr>th:nth-child(7) {
+    width: 10%;
+}
+
+.subtypes-table, .subtypes-table th, .subtypes-table td {
+    border: 2px solid #000;
+}
+.subtypes-table>thead>tr>th {
+    border-color: #000;
+    font-weight: 400;
+    text-align: center;
+    font-size: 18px;
+}
+.subtypes-table>tbody>tr>td {
+    height: 100px;
+    vertical-align: middle;
+}
+.subtypes-table>thead>tr>th:nth-child(1) {
+    width: 10%;
+}
+.subtypes-table>thead>tr>th:nth-child(2) {
+    width: 40%;
+}
+.subtypes-table>thead>tr>th:nth-child(3) {
+    width: 25%;
+}
+.subtypes-table>thead>tr>th:nth-child(4) {
+    width: 15%;
 }
 
 .action-admin {

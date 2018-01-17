@@ -9,9 +9,18 @@ use App\Type;
 
 class FiltersController extends Controller
 {
+    public function full_catalog()
+    {
+        return view('full_catalog');
+    }
+
+    public function cart()
+    {
+        return view('cart');
+    }
     public function index()
     {
-
+        return view('type_catalog');
     }
 
     public function getTypeIndex($type)

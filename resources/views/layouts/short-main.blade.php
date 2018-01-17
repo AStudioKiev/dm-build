@@ -55,22 +55,7 @@
         </div>
     </div>
 
-    <div class="container-md">
-        <div class="orange-nav-holder static">
-            <ul class="main-nav space-btw">
-                <li><a href="{{url('/')}}">Главная</a></li>
-                <li><a href="{{url('/contacts')}}">О нас</a></li>
-                <li><a href="{{url('/catalog')}}">Каталог</a></li>
-                <li><a href="{{url('/pricelist')}}">Прайс-лист</a></li>
-                <li><a href="{{url('/diller')}}">Дилерам</a></li>
-                <li><a href="{{url('/delivery')}}">Доставка</a></li>
-                <li><a href="{{url('/contacts')}}">Контакты</a></li>
-            </ul>
-        </div>
-
-        @yield('body')
-
-    </div>
+    @yield('body')
 
 </body>
 

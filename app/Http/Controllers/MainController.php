@@ -13,19 +13,9 @@ class MainController extends Controller
         return view('index');
     }
 
-    public function type_catalog()
+    public function basket()
     {
-        return view('type_catalog');
-    }
-
-    public function full_catalog()
-    {
-        return view('full_catalog');
-    }
-
-    public function cart()
-    {
-        return view('cart');
+        return view('basket');
     }
 
     public function contacts()
@@ -46,11 +36,6 @@ class MainController extends Controller
     public function pricelist()
     {
         return view('pricelist');
-    }
-
-    public function product()
-    {
-        return view('product');
     }
 
     public function getSubtypes()

@@ -8,8 +8,11 @@
             <a href="{{url('admin')}}">
                 <button id="mainBtn" name="add-new-btn" class="add-new-btn">Главная</button>
             </a>
-            <a href="{{url('admin/types/add')}}">
+            <a href="{{url('admin/types/add-type')}}">
                 <button id="addNewBtn" name="add-new-btn" class="add-new-btn">Добавить новый тип</button>
+            </a>
+            <a href="{{url('admin/types/add-subtype')}}">
+                <button id="addNewBtn" name="add-new-btn" class="add-new-btn">Добавить новый подтип</button>
             </a>
             <thead>
             <tr>

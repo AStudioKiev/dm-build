@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Request;
 
+use App\Poster;
 use App\Type;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $posters = Poster::take(10)->get();
+        $types = Type::whereNull('parent_id')->get();
+
+        return view('index', compact('posters', 'types'));
     }
 
     public function basket()

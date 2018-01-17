@@ -23,79 +23,36 @@
         </ol>
 
         <div class="carousel-inner">
-            <div class="item active">
-                <img src="img/top_c1.jpg" alt="" width="100%">
-            </div>
-
-            <div class="item">
-                <img src="img/top_c1.jpg" alt="" width="100%">
-            </div>
-
-            <div class="item">
-                <img src="img/top_c1.jpg" alt="" width="100%">
-            </div>
+            @for($i = 0; $i < count($posters); $i++)
+                <div class="item @if($i == 0) active @endif">
+                    <img src="{{asset($posters[$i]->image)}}" alt="{{$posters[$i]->name}}" width="100%">
+                </div>
+            @endfor
         </div>
     </div>
 </div>
 
 <div class="container-md mar-tp-4 mar-bt-4">
     <div class="catalog-sm-container space-btw">
+        @foreach($types as $type)
         <div class="category-card">
             <div class="brown-border">
-                <div class="category-name"><span>Fireway</span></div>
-                <div class="category-img"><img src="img/cat_1.jpg" height="100%"></div>
-                <div class="category-info"><span>отопительные печи<br> и аксессуары</span></div>
+                <a href="{{url('/catalog', $type->id)}}">
+                    <div class="category-name">
+                        <span>{{$type->name}}</span>
+                    </div>
+                </a>
+                <div class="category-img">
+                    <a href="{{url('/catalog', $type->id)}}">
+                        <img src="{{asset($type->image)}}" height="100%">
+                    </a>
+                </div>
+                <div class="category-info">
+                    <span>{!! $type->description !!}</span>
+                </div>
             </div>
         </div>
-        <div class="category-card">
-            <div class="brown-border">
-                <div class="category-name"><span>Tim sistem</span></div>
-                <div class="category-img"><img src="img/cat_2.jpg" height="100%"></div>
-                <div class="category-info"><span>отопительные печи<br> и кухонные плиты</span></div>
-            </div>
-        </div>
-        <div class="category-card">
-            <div class="brown-border">
-                <div class="category-name"><span>Nordflam</span></div>
-                <div class="category-img"><img src="img/cat_3.jpg" height="100%"></div>
-                <div class="category-info"><span>отопительные печи<br> и каменные топки</span></div>
-            </div>
-        </div>
-        <div class="category-card">
-            <div class="brown-border">
-                <div class="category-name"><span>Jabo Marmi</span></div>
-                <div class="category-img"><img src="img/cat_4.jpg" height="100%"></div>
-                <div class="category-info"><span>каменные облицовки<br> и изделия из мрамора</span></div>
-            </div>
-        </div>
-        <div class="category-card">
-            <div class="brown-border">
-                <div class="category-name"><span>Monolity</span></div>
-                <div class="category-img"><img src="img/cat_5.jpg" height="100%"></div>
-                <div class="category-info"><span>каменные топки, аксессуары<br> и дымоходные трубы</span></div>
-            </div>
-        </div>
-        <div class="category-card">
-            <div class="brown-border">
-                <div class="category-name"><span>Теплов и сухов</span></div>
-                <div class="category-img"><img src="img/cat_6.jpg" height="100%"></div>
-                <div class="category-info"><span>дымоходы и<br> аксессуары</span></div>
-            </div>
-        </div>
-        <div class="category-card">
-            <div class="brown-border">
-                <div class="category-name"><span>Status</span></div>
-                <div class="category-img"><img src="img/cat_7.jpg" height="100%"></div>
-                <div class="category-info"><span>печные аксессуары</span></div>
-            </div>
-        </div>
-        <div class="category-card">
-            <div class="brown-border">
-                <div class="category-name"><span>Roof master</span></div>
-                <div class="category-img"><img src="img/cat_8.jpg" height="100%"></div>
-                <div class="category-info"><span>проходы кровли</span></div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <div class="feedback-container">
@@ -250,8 +207,6 @@
             </div>
         </div>
     </div>
-
-    <div class="footer"><span>Сайт сделан web-site.kiev.ua</span></div>
 </div>
 
 @stop

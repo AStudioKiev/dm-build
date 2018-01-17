@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Агенство">
     <meta name="keywords" content="">
-    <title>Astudio</title>
+    <title>ДМ-СТРОЙ</title>
 
     <meta name="theme-color" content="#ffffff">
 
@@ -61,6 +61,12 @@
     @yield('body')
 
 </body>
+
+<div class="footer">
+    <span>
+        Created by <a href="https://web-site.kiev.ua/" target="_blank">AStudio web-site.kiev.ua</a>
+    </span>
+</div>
 
 <script src="js/mine.js"></script>
 @yield('js-section')

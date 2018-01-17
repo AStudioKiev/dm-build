@@ -18,7 +18,6 @@ class CreatePostersTable extends Migration
 
             $table->string('name')->nullable();
             $table->string('image');
-            $table->boolean('isActive')->default(false);
 
             $table->timestamps();
             $table->softDeletes();

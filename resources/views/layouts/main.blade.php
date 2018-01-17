@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Агенство">
     <meta name="keywords" content="">
-    <title>Astudio</title>
+    <title>ДМ-СТРОЙ</title>
 
     <meta name="theme-color" content="#ffffff">
 
@@ -73,6 +73,12 @@
 
         @yield('body')
 
+    </div>
+
+    <div class="footer">
+        <a href="https://web-site.kiev.ua/" target="_blank">
+            <span>Сайт сделан web-site.kiev.ua</span>
+        </a>
     </div>
 
 </body>

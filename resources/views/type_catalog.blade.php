@@ -61,6 +61,4 @@
     </div>
 </div>
 
-<div class="footer"><span>Сайт сделан web-site.kiev.ua</span></div>
-
 @stop

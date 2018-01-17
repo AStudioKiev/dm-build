@@ -9,12 +9,14 @@ Route::get('/catalog', 'MainController@full_catalog');
 Route::get('/cart', 'MainController@cart');
 
 Route::get('/contacts', 'MainController@contacts');
+Route::get('/aboutus', 'MainController@aboutus');
 Route::get('/delivery', 'MainController@delivery');
 Route::get('/diller', 'MainController@diller');
 Route::get('/pricelist', 'MainController@pricelist');
 Route::get('/basket', 'MainController@basket');
 
 Route::post('/getSubtypes', 'MainController@getSubtypes');
+Route::post('/mail', 'MainController@mail');
 
 Route::group(['prefix' => 'catalog'], function() {
     Route::get('/', 'FiltersController@index');

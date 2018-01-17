@@ -23,6 +23,21 @@ class MainController extends Controller
         return view('basket');
     }
 
+    public function mail()
+    {
+        $name = Request::get('name');
+        $phone = Request::get('phone');
+    }
+
+    public function dillerMail()
+    {
+        $fio = Request::get('fio');
+        $company = Request::get('company');
+        $address = Request::get('address');
+        $phone = Request::get('phone');
+        $email = Request::get('email');
+    }
+
     public function contacts()
     {
         return view('contacts');
@@ -41,6 +56,11 @@ class MainController extends Controller
     public function pricelist()
     {
         return view('pricelist');
+    }
+
+    public function aboutus()
+    {
+        return view('aboutus');
     }
 
     public function getSubtypes()

@@ -78,7 +78,8 @@
                         <button class="orange-sm-btn price-holder">
                             {{$product->price}}
                         </button>
-                        <button class="orange-sm-btn">Купить</button>
+                        <button class="orange-sm-btn" data-toggle="modal" data-target="#alertModal">Купить</button>
+                        {{ csrf_field() }}
                     </div>
                 </div>
             </div>
@@ -93,5 +94,29 @@
         </div>
     </div>
 </div>
+
+@stop
+
+@section('js-section')
+
+<script>
+
+$('.orange-sm-btn').on('click', function(){
+    $.ajax({
+        type : 'POST',
+        url : "{{url('/addToCart', $product->id)}}",
+        data: {_token: $("input[name*='_token']").val()},
+        error: function(result){
+            console.log('error: ', result);
+        },
+        success: function(result){
+            var count = parseInt($('.cart-count span').text()) + 1;
+            $('.cart-count span').text(count);
+        }
+    });
+});
+
+
+</script>
 
 @stop

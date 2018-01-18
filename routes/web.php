@@ -15,15 +15,15 @@ Route::get('/diller', 'MainController@diller');
 Route::get('/pricelist', 'MainController@pricelist');
 Route::get('/basket', 'MainController@basket');
 
-Route::post('/getSubtypes', 'MainController@getSubtypes');
 Route::post('/mail', 'MainController@mail');
+Route::post('/getSubtypes', 'MainController@getSubtypes');
+Route::post('/addToCart/{product_id}', 'FiltersController@addToCart');
 
 Route::group(['prefix' => 'catalog'], function() {
     Route::get('/', 'FiltersController@index');
     Route::get('/{type}', 'FiltersController@getTypeIndex');
     Route::get('/{type}/{subtype}', 'FiltersController@getSubtypeIndex');
     Route::get('/{type}/{subtype}/{product_id}', 'FiltersController@getProductIndex');
-    Route::post('/{type}/{subtype}/{product_id}', 'FiltersController@addToCart');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){

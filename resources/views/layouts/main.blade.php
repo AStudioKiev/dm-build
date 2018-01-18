@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <div class="alert-ico"><img src="img/done-tick.png" alt="" width="100%"></div>
+                        <div class="alert-ico"><img src="{{asset('img/done-tick.png')}}" alt="" width="100%"></div>
                         <div class="alert-info"><span>Благодарим за оставленную заявку. Менеджер свяжется с вами в ближайшее время</span></div>
                     </div>
                 </div>
@@ -40,10 +40,18 @@
         </div>
     </div>
 
-    <div class="arrow-left"><a href="#"><img src="{{asset('img/left-arrow.png')}}" alt="" width="100%"></a></div>
-    <div class="arrow-up"><a href="#"><img src="{{asset('img/left-arrow.png')}}" alt="" width="100%"></a></div>
+    <div class="arrow-left">
+        <a href="{{substr(url()->current(), 0, strrpos(url()->current(), '/'))}}">
+            <img src="{{asset('img/left-arrow.png')}}" alt="back" width="100%">
+        </a>
+    </div>
+    <div class="arrow-up">
+        <a href="#home" class="scroll">
+            <img src="{{asset('img/left-arrow.png')}}" alt="up" width="100%">
+        </a>
+    </div>
 
-    <div class="bot-shadow">
+    <div class="bot-shadow" id="home">
         <div class="container-md">
             <div class="white-nav space-btw">
                 <div class="logo-holder">
@@ -76,7 +84,7 @@
                         <a href="{{url('/cart')}}">
                             <img src="{{asset('img/cart.png')}}" alt="cart" width="44px">
                             <div class="cart-count">
-                                <span>0</span>
+                                <span>{{$basketCount}}</span>
                             </div>
                         </a>
                     </div>

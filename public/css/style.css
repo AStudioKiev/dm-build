@@ -854,18 +854,27 @@ a, a:hover, a:focus {
 .product-table {
     width: 100%;
 }
-.product-table>tbody>tr>td:nth-child(1) {
+.product-table-grid>* {
+    width: 100%!important;
+}
+.product-table-grid tbody>tr>td:nth-child(1) {
     font-family: "AKROBATBK", CenturyGothic, AppleGothic, sans-serif;
     font-size: 18px;
     width: 60%;
     border: 1px solid #aeaeae;
     padding-left: 10px;
 }
-.product-table>tbody>tr>td:nth-child(2) {
+.product-table-grid tbody>tr>td:nth-child(2) {
     font-size: 18px;
     width: 40%;
     border: 1px solid #aeaeae;
     padding-left: 10px;
+}
+.product-table-grid tbody>tr:nth-child(2n)>td {
+    background-color: #fbecdd;
+}
+.product-table-grid tbody>tr:nth-child(2n+1)>td {
+    background-color: #fdf6ef;
 }
 .orange-sm-btn {
     width: 180px;

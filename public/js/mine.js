@@ -2,7 +2,7 @@ $('.carousel').carousel();
 
 $("#carousel-example-generic .carousel-indicators p").hover(function(){
     var goto = Number( $(this).attr('data-slide-to') );
-    $("#carousel-example-generic").carousel(goto);  
+    $("#carousel-example-generic").carousel(goto);
 });
 
 $(function() {
@@ -76,26 +76,3 @@ function showAsk() {
         nav.classList.add('ask-hidden');
     }
 }
-
-jQuery(function($){
-    var nav = document.getElementById("ask_popup");
-    $('body').click(function (event) {
-        var el = $(event.target);
-        var result = false;
-
-        if(el.is('#ask_popup')){
-            result = true;
-        } else {
-            el.parents().each(function( index ) {
-                if($( this ).is('#ask_popup')){
-                    result = true;
-                }
-            });
-        }
-
-        if(!result && !el.parent().hasClass('ask-btn')){
-            nav.classList.remove('ask-visible');
-            nav.classList.add('ask-hidden');
-        }
-    });
-});

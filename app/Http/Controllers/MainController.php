@@ -12,14 +12,16 @@ class MainController extends Controller
 {
     public function index()
     {
+        $basketCount = $this->getBasketCount();
         $posters = Poster::take(10)->get();
         $types = Type::whereNull('parent_id')->get();
 
-        return view('index', compact('posters', 'types'));
+        return view('index', compact('posters', 'types', 'basketCount'));
     }
 
     public function pricelist()
     {
+        $basketCount = $this->getBasketCount();
         $parent_types = Type::whereNull('parent_id')->get();
 
         $child_types = [];
@@ -28,12 +30,13 @@ class MainController extends Controller
             $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get();
         }
 
-        return view('pricelist', compact('parent_types', 'child_types'));
+        return view('pricelist', compact('parent_types', 'child_types', 'basketCount'));
     }
 
     public function basket()
     {
-        return view('basket');
+        $basketCount = $this->getBasketCount();
+        return view('basket', compact('basketCount'));
     }
 
     public function mail()
@@ -53,26 +56,46 @@ class MainController extends Controller
 
     public function contacts()
     {
-        return view('contacts');
+        $basketCount = $this->getBasketCount();
+        return view('contacts', compact('basketCount'));
     }
 
     public function delivery()
     {
-        return view('delivery');
+        $basketCount = $this->getBasketCount();
+        return view('delivery', compact('basketCount'));
     }
 
     public function diller()
     {
-        return view('diller');
+        $basketCount = $this->getBasketCount();
+        return view('diller', compact('basketCount'));
     }
 
     public function aboutus()
     {
-        return view('aboutus');
+        $basketCount = $this->getBasketCount();
+        return view('aboutus', compact('basketCount'));
     }
 
     public function getSubtypes()
     {
         return Type::where('parent_id', Request::get('type'))->get();
+    }
+
+    private function getBasketCount()
+    {
+        $basketCount = 0;
+        $basket_products = Request::cookie('basket_products');
+
+        if(!empty($basket_products))
+        {
+            $basket_products = explode('_', $basket_products);
+
+            foreach ($basket_products as $basket_product)
+                $basketCount += explode('-', $basket_product)[0];
+        }
+
+        return $basketCount;
     }
 }

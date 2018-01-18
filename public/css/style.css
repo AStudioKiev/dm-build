@@ -322,37 +322,37 @@ a, a:hover, a:focus {
     margin-top: 50px;
 }
 .advantage-card-1 {
-    background-image: url(../img/adv1.jpg);
+    background-image: url(../img/advantages1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .advantage-card-2 {
-    background-image: url(../img/adv2.jpg);
+    background-image: url(../img/advantages2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .advantage-card-3 {
-    background-image: url(../img/adv3.jpg);
+    background-image: url(../img/advantages3.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .advantage-card-4 {
-    background-image: url(../img/adv4.jpg);
+    background-image: url(../img/advantages4.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .advantage-card-5 {
-    background-image: url(../img/adv5.jpg);
+    background-image: url(../img/advantages5.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .advantage-card-6 {
-    background-image: url(../img/adv6.jpg);
+    background-image: url(../img/advantages6.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -990,7 +990,7 @@ a, a:hover, a:focus {
     -moz-transition: all 300ms ease-out;
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
-    
+
     top: -344px;
 }
 .mobile-visible{
@@ -998,7 +998,7 @@ a, a:hover, a:focus {
     -moz-transition: all 400ms ease-out;
     -o-transition: all 400ms ease-out;
     transition: all 400ms ease-out;
-    
+
     top: 118px;
 }
 #toggle_nav {

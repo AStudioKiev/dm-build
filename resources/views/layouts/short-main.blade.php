@@ -54,8 +54,12 @@
                     </div>
 
                     <div class="cart-holder">
-                        <img src="img/cart.png" alt="" width="44px">
-                        <div class="cart-count"><span>0</span></div>
+                        <a href="{{url('/cart')}}"
+                            <img src="{{asset('img/cart.png')}}" alt="cart" width="44px">
+                            <div class="cart-count">
+                                <span>0</span>
+                            </div>
+                        </a>
                     </div>
 
                     <div id="toggle_nav" onclick="showNav();"><img src="img/menu.png" alt="" width="100%"></div>

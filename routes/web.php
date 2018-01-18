@@ -23,6 +23,7 @@ Route::group(['prefix' => 'catalog'], function() {
     Route::get('/{type}', 'FiltersController@getTypeIndex');
     Route::get('/{type}/{subtype}', 'FiltersController@getSubtypeIndex');
     Route::get('/{type}/{subtype}/{product_id}', 'FiltersController@getProductIndex');
+    Route::post('/{type}/{subtype}/{product_id}', 'FiltersController@addToCart');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){

@@ -45,24 +45,24 @@
                     <div class="contact-nav-point">
                         <div class="contact-nav-icon"><img src="img/placeholder.png" alt="" height="100%"></div>
                         <div class="contact-nav-text">
-                            <a href="https://goo.gl/maps/mWNqZNCWEJP2" target="_blank">г. Киев ул. Космонавтов 23</a>
+                            <a>ул. Коммунистическая 25г, офис Т-43</a>
                         </div>
                     </div>
                     <div class="contact-nav-point">
                         <div class="contact-nav-icon"><img src="img/email.png" alt="" height="100%"></div>
                         <div class="contact-nav-text">
-                            <a href="mailto:dm-stroy@gmail.com">dm-stroy@gmail.com</a>
+                            <a href="mailto:site@dmstroy.su">site@dmstroy.su</a>
                         </div>
                     </div>
                     <div class="contact-nav-point">
                         <div class="contact-nav-icon"><img src="img/telephone.png" alt="" height="100%"></div>
                         <div class="contact-nav-text">
-                            <a href="tel:+380975216574">+38 (097) 521 65 74</a>
+                            <a href="tel:+79031843746">+7 (903) 184 37 46</a>
                         </div>
                     </div>
 
                     <div class="cart-holder">
-                        <a href="{{url('/cart')}}">
+                        <a href="{{url('/basket')}}">
                             <img src="{{asset('img/cart.png')}}" alt="cart" width="44px">
                             <div class="cart-count">
                                 <span>{{$basketCount}}</span>

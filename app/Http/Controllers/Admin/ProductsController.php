@@ -58,6 +58,7 @@ class ProductsController extends Controller
 
         $product->name = Request::get('name');
         $product->description = Request::get('description');
+        $product->short_description = Request::get('short_description');
         $product->colors = Request::get('colors');
         $product->type = Request::get('type');
         $product->subtype = Request::get('subtype');

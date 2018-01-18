@@ -2,7 +2,7 @@
 
 @section('body')
 
-<div class="about-container">
+<div class="about-container about-lg-grid">
     <div class="image-text-holder space-btw">
         <div class="image-holder"><img src="img/kotl_info.jpg" alt="" width="100%"></div>
 

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Request;
-use Responce;
 
-use App\Product;
 use App\Type;
+use App\Product;
 
 class FiltersController extends Controller
 {
@@ -65,11 +64,21 @@ class FiltersController extends Controller
         return view('cart', compact('product', 'parent_types', 'child_types', 'type', 'basketCount'));
     }
 
+    public function basket()
+    {
+        $products = [];
+        $basket = $this->takeApart();
+        $basketCount = $this->getBasketCount();
+
+        foreach ($basket as $key => $value)
+            $products[] = Product::find($key);
+
+        return view('basket', compact('products', 'basket', 'basketCount'));
+    }
+
     public function addToCart($product_id)
     {
-        $basket_products = Request::cookie('basket_products');
-
-        if(empty($basket_products))
+        if(empty(Request::cookie('basket_products')))
         {
             $cookieVal = $product_id . '-1';
             $cookie = cookie('basket_products', $cookieVal, time() + 60*60*3);
@@ -77,7 +86,7 @@ class FiltersController extends Controller
         }
         else
         {
-            $basket = $this->takeApart($basket_products);
+            $basket = $this->takeApart();
 
             if(!empty($basket[$product_id]))
                 $basket[$product_id]++;
@@ -91,15 +100,68 @@ class FiltersController extends Controller
         }
     }
 
-    private function takeApart($basket_products)
+    public function setBasketCookie()
+    {
+        $id = intval(Request::get('data_id'));
+        $count = intval(Request::get('count'));
+
+        $basket = $this->takeApart();
+
+        if($count != 0)
+            $basket[$id] = $count;
+        else
+            unset($basket[$id]);
+
+        $cookieVal = $this->putTogether($basket);
+        $cookie = cookie('basket_products', $cookieVal, time() + 60*60*3);
+
+        return response($count, 200)->cookie($cookie);
+    }
+
+    public function sendOrder()
+    {
+        $name = trim(strip_tags(Request::get('name')));
+        $phone = trim(strip_tags(Request::get('phone')));
+        $email = trim(strip_tags(Request::get('email')));
+
+        $basket = $this->takeApart();
+        $message = "Вам написал: $name<br/>
+        Его телефон: $phone<br/>
+        Его email: $email<br/>";
+
+        if(!empty($basket))
+        {
+            foreach ($basket as $key => $value)
+            {
+                $product = Product::find($key);
+                $message .= $product->name . ' -> ' . $value . 'штук<br/>';
+            }
+
+            mail(
+                'astudio0711@gmail.com',
+                "Письмо с ДМ-СТРОЙ",
+                $message,
+                "Content-type:text/html;charset=UTF-8"
+            );
+
+            return response('sent', 200);
+        }
+    }
+
+    private function takeApart()
     {
         $basket = [];
-        $basket_products = explode('_', $basket_products);
+        $basket_products = Request::cookie('basket_products');
 
-        foreach ($basket_products as $basket_product)
+        if(!empty($basket_products))
         {
-            $product = explode('-', $basket_product);
-            $basket[$product[0]] = $product[1];
+            $basket_products = explode('_', $basket_products);
+
+            foreach ($basket_products as $basket_product)
+            {
+                $product = explode('-', $basket_product);
+                $basket[$product[0]] = $product[1];
+            }
         }
 
         return $basket;

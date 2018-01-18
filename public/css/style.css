@@ -70,6 +70,14 @@ a, a:hover, a:focus {
 .up_link>img {
     width: 45px;
 }
+.underlined {
+    text-decoration: underline;
+}
+.bold {
+    font-family: "AKROBATBK", CenturyGothic, AppleGothic, sans-serif;
+}
+
+
 
 
 .white-nav {
@@ -200,7 +208,10 @@ a, a:hover, a:focus {
     line-height: 34px;
 }
 
-
+.about-lg-grid {
+    margin-top: 2px!important;
+    padding-top: 20px!important;
+}
 .feedback-container {
     width: 100%;
     background-image: url(../img/metal_bg.jpg);
@@ -701,9 +712,15 @@ a, a:hover, a:focus {
     margin-top: 2px;
 }
 .catalog-list-container {
-    padding-left: 5%;
-    padding-right: 30px;
+    padding-left: 4%;
+    padding-right: 20px;
     padding-bottom: 0;
+}
+.catalog-list-container .space-btw {
+    text-align: center;
+}
+.catalog-list-container .product-holder {
+    margin: 0 10px 80px 10px;
 }
 .product-holder {
     width: 100%;
@@ -1400,9 +1417,6 @@ a, a:hover, a:focus {
         padding-left: 20px;
         padding-right: 20px;
     }
-    .catalog-list-container .space-btw {
-        text-align: center;
-    }
     .catalog-list-container .product-holder {
         margin-left: 3%;
         margin-right: 3%;
@@ -1415,9 +1429,14 @@ a, a:hover, a:focus {
     }
     .catalog-sm-container, .advantages-container {
         width: 100%;
-        max-width: 889px;
         margin-left: auto;
         margin-right: auto;
+    }
+    .catalog-sm-container {
+        text-align: center;
+    }
+    .catalog-sm-container .category-card {
+        margin: 0 15px 80px 15px;
     }
 }
 @media screen and (max-width: 1070px) {
@@ -1501,7 +1520,6 @@ a, a:hover, a:focus {
 @media screen and (max-width: 885px) {
     .catalog-sm-container {
         width: 100%;
-        max-width: 593px;
         margin: 80px auto 0 auto;
     }
 }
@@ -1553,6 +1571,14 @@ a, a:hover, a:focus {
     .pricelist-header-img {
         margin-bottom: 20px;
     }
+    .arrow-left {
+        right: 50%;
+        margin-right: 8px;
+    }
+    .arrow-up {
+        right: 50%;
+        margin-right: -55px;
+    }
 }
 @media screen and (max-width: 630px) {
     .look-btn, .del-btn {
@@ -1591,7 +1617,7 @@ a, a:hover, a:focus {
     }
     .category-card {
         display: block;
-        margin: 0 auto 80px auto;
+        margin: 0 auto 80px auto!important;
     }
     .catalog-sm-container .category-card:last-child {
         margin-bottom: 0;

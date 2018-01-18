@@ -33,25 +33,10 @@ class MainController extends Controller
         return view('pricelist', compact('parent_types', 'child_types', 'basketCount'));
     }
 
-    public function basket()
-    {
-        $basketCount = $this->getBasketCount();
-        return view('basket', compact('basketCount'));
-    }
-
     public function mail()
     {
         $name = Request::get('name');
         $phone = Request::get('phone');
-    }
-
-    public function dillerMail()
-    {
-        $fio = Request::get('fio');
-        $company = Request::get('company');
-        $address = Request::get('address');
-        $phone = Request::get('phone');
-        $email = Request::get('email');
     }
 
     public function contacts()
@@ -70,6 +55,30 @@ class MainController extends Controller
     {
         $basketCount = $this->getBasketCount();
         return view('diller', compact('basketCount'));
+    }
+
+    public function dillerMail()
+    {
+        $fio = Request::get('fio');
+        $company = Request::get('company');
+        $address = Request::get('address');
+        $phone = Request::get('phone');
+        $email = Request::get('email');
+
+        $message = "Вам написал: $fio<br/>
+        Его компания: $company<br/>
+        Его адрес: $address<br/>
+        Его телефон: $phone<br/>
+        Его email: $email<br/>";
+
+        mail(
+            'astudio0711@gmail.com',
+            "Письмо с ДМ-СТРОЙ",
+            $message,
+            "Content-type:text/html;charset=UTF-8"
+        );
+
+        return response('sent', 200);
     }
 
     public function aboutus()
@@ -93,7 +102,7 @@ class MainController extends Controller
             $basket_products = explode('_', $basket_products);
 
             foreach ($basket_products as $basket_product)
-                $basketCount += explode('-', $basket_product)[0];
+                $basketCount += intval(explode('-', $basket_product)[1]);
         }
 
         return $basketCount;

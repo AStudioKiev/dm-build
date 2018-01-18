@@ -6,18 +6,21 @@ Route::get('/', 'MainController@index');
 
 Route::get('/catalog', 'MainController@type_catalog');
 Route::get('/catalog', 'MainController@full_catalog');
-Route::get('/cart', 'MainController@cart');
 
 Route::get('/contacts', 'MainController@contacts');
 Route::get('/aboutus', 'MainController@aboutus');
 Route::get('/delivery', 'MainController@delivery');
 Route::get('/diller', 'MainController@diller');
 Route::get('/pricelist', 'MainController@pricelist');
-Route::get('/basket', 'MainController@basket');
+Route::get('/basket', 'FiltersController@basket');
 
 Route::post('/mail', 'MainController@mail');
 Route::post('/getSubtypes', 'MainController@getSubtypes');
 Route::post('/addToCart/{product_id}', 'FiltersController@addToCart');
+Route::post('/setBasketCookie', 'FiltersController@setBasketCookie');
+
+Route::post('/sendOrder', 'FiltersController@sendOrder');
+Route::post('/dillerSend', 'FiltersController@dillerSend');
 
 Route::group(['prefix' => 'catalog'], function() {
     Route::get('/', 'FiltersController@index');

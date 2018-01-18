@@ -183,21 +183,19 @@
                     <div class="contact-point">
                         <div class="contact-icon"><img src="img/telephone.png" alt="" width="100%"></div>
                         <div class="contact-text">
-                            <a href="#">+38 (093) 555 55 55<br></a>
-                            <a href="#">+38 (097) 333 33 33<br></a>
-                            <a href="#">+38 (078) 999 99 99<br></a>
+                            <a href="tel:+79031843746">+7 (903) 184 37 46</a>
                         </div>
                     </div>
                     <div class="contact-point">
                         <div class="contact-icon"><img src="img/email.png" alt="" width="100%"></div>
                         <div class="contact-text">
-                            <a href="#">dm-stroy@gmail.com</a>
+                            <a href="mailto:site@dmstroy.su">site@dmstroy.su</a>
                         </div>
                     </div>
                     <div class="contact-point">
                         <div class="contact-icon"><img src="img/placeholder.png" alt="" width="100%"></div>
                         <div class="contact-text">
-                            <a href="#">г. Киев ул. Космонавтов 23</a>
+                            <a>Москва, Россия<br>141011, ул. Коммунистическая 25г, корпус "Т", офис Т-43<br>офис 43.</a>
                         </div>
                     </div>
                 </div>

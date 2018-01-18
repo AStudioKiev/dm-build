@@ -18,6 +18,19 @@ class MainController extends Controller
         return view('index', compact('posters', 'types'));
     }
 
+    public function pricelist()
+    {
+        $parent_types = Type::whereNull('parent_id')->get();
+
+        $child_types = [];
+        foreach ($parent_types as $parent_type)
+        {
+            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get();
+        }
+
+        return view('pricelist', compact('parent_types', 'child_types'));
+    }
+
     public function basket()
     {
         return view('basket');
@@ -51,11 +64,6 @@ class MainController extends Controller
     public function diller()
     {
         return view('diller');
-    }
-
-    public function pricelist()
-    {
-        return view('pricelist');
     }
 
     public function aboutus()

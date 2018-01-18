@@ -6,142 +6,30 @@
     <div class="row">
         <div class="left-nav col-md-2">
             <ul id="accordion" class="category-list panel-group">
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Fireway</a>
-                        </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
+                @for($i = 0; $i < count($parent_types); $i++)
+                    <li class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i+1}}">
+                                    {{$parent_types[$i]->name}}
+                                </a>
+                            </h4>
                         </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Tim Sistem</a>
-                        </h4>
-                    </div>
-                    <div id="collapse2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
+                        <div id="collapse{{$i+1}}" class="panel-collapse collapse @if($i == 0) in @endif">
+                            <div class="panel-body">
+                                <ul class="inner-list">
+                                    @foreach($child_types[$parent_types[$i]->id] as $child_type)
+                                        <li>
+                                            <a href="{{url('/catalog/' . $parent_types[$i]->id . '/' . $child_type->id)}}">
+                                                {{$child_type->name}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Nordflam</a>
-                        </h4>
-                    </div>
-                    <div id="collapse3" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Jabo Marmi</a>
-                        </h4>
-                    </div>
-                    <div id="collapse4" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Monolity</a>
-                        </h4>
-                    </div>
-                    <div id="collapse5" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Теплов и Сухов</a>
-                        </h4>
-                    </div>
-                    <div id="collapse6" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Status</a>
-                        </h4>
-                    </div>
-                    <div id="collapse7" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">Roof master</a>
-                        </h4>
-                    </div>
-                    <div id="collapse8" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="inner-list">
-                                <li>Универсальные проходы кровли</li>
-                                <li>Вентиляционные выходы</li>
-                                <li>Подкровельная вентиляция</li>
-                                <li>Битумные ленты</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endfor
             </ul>
         </div>
 

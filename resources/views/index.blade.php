@@ -123,7 +123,8 @@
             </div>
 
             <div class="delivery-stages-holder">
-                <img src="img/delivery.png" alt="" width="100%">
+                <img class="md-delivery" src="img/delivery.png" alt="" width="100%">
+                <img class="sm-delivery" src="img/grey.png" alt="" width="100%">
             </div>
         </div>
     </div>

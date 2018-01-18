@@ -57,6 +57,18 @@
                         <img src="img/cart.png" alt="" width="44px">
                         <div class="cart-count"><span>0</span></div>
                     </div>
+
+                    <div id="toggle_nav" onclick="showNav();"><img src="img/menu.png" alt="" width="100%"></div>
+                    <ul id="mobile_nav" class="mobile-hidden">
+                        <li><a class="scroll" href="{{url('/')}}">Главная</a></li>
+                        <li><a class="scroll" href="{{url('/aboutus')}}">О нас</a></li>
+                        <li><a class="scroll" href="{{url('/catalog')}}">Каталог</a></li>
+                        <li><a class="scroll" href="{{url('/pricelist')}}">Прайс-лист</a></li>
+                        <li><a class="scroll" href="{{url('/diller')}}">Дилерам</a></li>
+                        <li><a class="scroll" href="{{url('/delivery')}}">Доставка</a></li>
+                        <li><a class="scroll" href="{{url('/contacts')}}">Контакты</a></li>
+                    </ul>
+
                 </div>
             </div>
         </div>
@@ -65,6 +77,24 @@
     @yield('body')
 
 </body>
+
+<!-- <input type="submit" role="button" class="lg-btn red-btn mobile-btn" value="Зарегистрироваться" data-toggle="modal" data-target="#alertModal"> -->
+<div id="alertModal" class="modal fade" role="dialog">
+    <div class="modal-dialog outer-wrapper">
+        <div class="inner-wrapper">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="alert-ico"><img src="img/done-tick.png" alt="" width="100%"></div>
+                    <div class="alert-info"><span>Благодарим за оставленную заявку. Менеджер свяжется с вами в ближайшее время</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="footer">
     <a href="https://web-site.kiev.ua/" target="_blank">

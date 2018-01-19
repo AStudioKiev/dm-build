@@ -14,13 +14,12 @@ Route::get('/diller', 'MainController@diller');
 Route::get('/pricelist', 'MainController@pricelist');
 Route::get('/basket', 'FiltersController@basket');
 
-Route::post('/mail', 'MainController@mail');
 Route::post('/getSubtypes', 'MainController@getSubtypes');
 Route::post('/addToCart/{product_id}', 'FiltersController@addToCart');
 Route::post('/setBasketCookie', 'FiltersController@setBasketCookie');
 
 Route::post('/sendOrder', 'FiltersController@sendOrder');
-Route::post('/dillerSend', 'FiltersController@dillerSend');
+Route::post('/dillerSend', 'MainController@dillerSend');
 
 Route::group(['prefix' => 'catalog'], function() {
     Route::get('/', 'FiltersController@index');

@@ -30,7 +30,7 @@
         </div>
 
         <div class="diller-form-holder">
-            <form action="contactForm.php" method="post" id="contactPopup" class="form">
+            <form id="contactPopup" class="form">
                 <p class="diller-form-header">Заполните форму и мы обязательно с вами свяжемся.</p>
 
                 <div class="select-wrapper">
@@ -58,6 +58,7 @@
                         <input type="email" name="email" required placeholder="Адрес электронной почты" class="form-control input-field">
                     </div>
                 </div>
+                {{csrf_field()}}
 
                 <input type="submit" role="button" class="orange-btn" value="Отправить заявку">
             </form>
@@ -71,6 +72,27 @@
 
 <script>
 
+$('#contactPopup').on('submit', function(event){
+    event.preventDefault();
+
+    var data = {
+        fio: $('input[name=fio]').val(),
+        company: $('input[name=company]').val(),
+        address: $('input[name=address]').val(),
+        phone: $('input[name=phone]').val(),
+        email: $('input[name=email]').val(),
+        _token: $("input[name*='_token']").val()
+    };
+
+    $.ajax({
+        data: data,
+        method: 'POST',
+        url: "{{url('/dillerSend')}}",
+        error: function(result){
+            console.log('err: ', result);
+        }
+    });
+});
 
 </script>
 

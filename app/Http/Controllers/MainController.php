@@ -33,12 +33,6 @@ class MainController extends Controller
         return view('pricelist', compact('parent_types', 'child_types', 'basketCount'));
     }
 
-    public function mail()
-    {
-        $name = Request::get('name');
-        $phone = Request::get('phone');
-    }
-
     public function contacts()
     {
         $basketCount = $this->getBasketCount();
@@ -57,7 +51,7 @@ class MainController extends Controller
         return view('diller', compact('basketCount'));
     }
 
-    public function dillerMail()
+    public function dillerSend()
     {
         $fio = Request::get('fio');
         $company = Request::get('company');

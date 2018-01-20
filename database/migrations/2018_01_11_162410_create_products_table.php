@@ -18,14 +18,16 @@ class CreateProductsTable extends Migration
 
             $table->string('name');
             $table->string('name_desc')->nullable();
+            $table->string('code')->nullable();
+            $table->float('price');
+
             $table->string('image');
+
             $table->string('short_description');
             $table->text('description')->nullable();
             $table->mediumText('long_description')->nullable();
             $table->string('video_url')->nullable();
-            $table->string('code')->nullable();
-            $table->string('colors')->nullable();
-            $table->float('price');
+
             $table->integer('type')->unsigned();
             $table->integer('subtype')->unsigned();
 

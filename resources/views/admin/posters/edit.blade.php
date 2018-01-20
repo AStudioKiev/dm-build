@@ -17,7 +17,7 @@
                     <img width="100%" height="100%" src="{{ asset($poster->image) }}">
                 </div>
                 <div class="select form-group upload-holder">
-                    <label for="name">Изображение</label>
+                    <label for="image">Изображение</label>
                     <div class="upload-fictive"><span>Choose a file</span></div>
                     <!-- 5MB limit -->
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />

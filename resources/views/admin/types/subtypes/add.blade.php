@@ -7,7 +7,8 @@
             {{ csrf_field() }}
             <div class="select-wrapper">
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="name" required placeholder="Название" class="form-control input-field">
+                    <label for="name">Название</label>
+                    <input type="text" name="name" required class="form-control input-field">
                 </div>
                 <input type="hidden" name="parent_id" value="{{$type_id}}">
             </div>

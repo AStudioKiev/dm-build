@@ -18,7 +18,7 @@
                         <div class="upload-fictive"><span>Choose a file</span></div>
                         <!-- 5MB limit -->
                         <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-                        <input type="file" name="image" class="form-control upload-file">
+                        <input type="file" name="image" required class="form-control upload-file">
                         <span class="not-found-label">File is not found</span>
                     </div>
                 </div>

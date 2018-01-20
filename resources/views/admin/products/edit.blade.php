@@ -11,13 +11,24 @@
             {{ csrf_field() }}
             <div class="select-wrapper">
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="name" value="{{$product->name}}" required placeholder="Название" class="form-control input-field">
+                    <label for="name">Название</label>
+                    <input type="text" name="name" value="{{$product->name}}" required class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="code" value="{{$product->code}}" placeholder="Артикул" class="form-control input-field">
+                    <label for="name_desc">Под название</label>
+                    <input type="text" name="name_desc" value="{{$product->name_desc}}" class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="number" name="price" value="{{$product->price}}" required placeholder="Цена" class="form-control input-field">
+                    <label for="code">Артикул</label>
+                    <input type="text" name="code" value="{{$product->code}}" class="form-control input-field">
+                </div>
+                <div class="select form-group mar-tp-1 mar-bt-2">
+                    <label for="price">Цена</label>
+                    <input type="number" name="price" value="{{$product->price}}" required class="form-control input-field">
+                </div>
+                <div class="select form-group mar-tp-1 mar-bt-2">
+                    <label for="video_url">Ссылка на видео</label>
+                    <input type="text" name="video_url" value="{{$product->video_url}}" class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
                     <select id="type_select" name="type">
@@ -42,6 +53,7 @@
                     <img width="100%" height="100%" src="{{ asset($product->image) }}">
                 </div>
                 <div class="select form-group upload-holder">
+                    <label for="image">Изображение</label>
                     <div class="upload-fictive"><span>Choose a file</span></div>
                     <!-- 5MB limit -->
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
@@ -51,13 +63,21 @@
             </div>
 
             <div class="select-wrapper mar-bt-1">
-                <textarea id="short_description" rows="4" name="short_description" placeholder="Краткое описание" class="textarea-field">
+                <label for="short_description">Краткое описание</label>
+                <textarea id="short_description" rows="4" name="short_description" class="textarea-field">
                     {{$product->short_description}}
                 </textarea>
             </div>
             <div class="select-wrapper mar-bt-1">
-                <textarea id="description" rows="7" name="description" placeholder="Описание" class="textarea-field">
+                <label for="description">Описание</label>
+                <textarea id="description" rows="7" name="description" class="textarea-field">
                     {{$product->description}}
+                </textarea>
+            </div>
+            <div class="select-wrapper mar-bt-1">
+                <label for="long_description">Длинное описание</label>
+                <textarea id="long_description" rows="12" name="long_description" class="textarea-field">
+                    {{$product->long_description}}
                 </textarea>
             </div>
 

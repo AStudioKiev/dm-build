@@ -56,15 +56,6 @@ class ProductsController extends Controller
     {
         $product = Product::find($id);
 
-        $product->name = Request::get('name');
-        $product->description = Request::get('description');
-        $product->short_description = Request::get('short_description');
-        $product->colors = Request::get('colors');
-        $product->type = Request::get('type');
-        $product->subtype = Request::get('subtype');
-        $product->code = Request::get('code');
-        $product->price = Request::get('price');
-
         if(Request::hasFile('image'))
         {
             $pos = strrpos($product->image, '/');
@@ -75,7 +66,7 @@ class ProductsController extends Controller
             $file->move(public_path() . $path, $name);
         }
 
-        $product->update();
+        $product->update(Request::all());
 
         return redirect('admin/products');
     }

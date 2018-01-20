@@ -81,7 +81,7 @@ class FiltersController extends Controller
         if(empty(Request::cookie('basket_products')))
         {
             $cookieVal = $product_id . '-1';
-            $cookie = cookie('basket_products', $cookieVal, time() + 60*60*3);
+            $cookie = cookie('basket_products', $cookieVal, 60);
             return response($cookieVal, 200)->cookie($cookie);
         }
         else
@@ -94,7 +94,7 @@ class FiltersController extends Controller
                 $basket[$product_id] = 1;
 
             $cookieVal = $this->putTogether($basket);
-            $cookie = cookie('basket_products', $cookieVal, time() + 60*60*3);
+            $cookie = cookie('basket_products', $cookieVal, 60);
 
             return response($cookieVal, 200)->cookie($cookie);
         }
@@ -113,7 +113,7 @@ class FiltersController extends Controller
             unset($basket[$id]);
 
         $cookieVal = $this->putTogether($basket);
-        $cookie = cookie('basket_products', $cookieVal, time() + 60*60*3);
+        $cookie = cookie('basket_products', $cookieVal, 60);
 
         return response($count, 200)->cookie($cookie);
     }

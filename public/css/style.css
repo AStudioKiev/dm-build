@@ -73,6 +73,11 @@ a, a:hover, a:focus {
 .underlined {
     text-decoration: underline;
 }
+.underlined-lg {
+    text-decoration: underline;
+    font-size: 36px;
+    text-align: left;
+}
 .bold {
     font-family: "AKROBATBK", CenturyGothic, AppleGothic, sans-serif;
 }
@@ -445,7 +450,10 @@ a, a:hover, a:focus {
     width: 100%;
     max-width: 500px;
 }
-
+.delivery-container p {
+    font-family: "AKROBATSB", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 20px;
+}
 
 .footer {
     width: 100%;

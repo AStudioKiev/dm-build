@@ -11,13 +11,24 @@
             {{ csrf_field() }}
             <div class="select-wrapper">
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="name" required placeholder="Название" class="form-control input-field">
+                    <label for="name">Название</label>
+                    <input type="text" name="name" required class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="code" placeholder="Артикул" class="form-control input-field">
+                    <label for="name_desc">Под название</label>
+                    <input type="text" name="name_desc" class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="number" name="price" required placeholder="Цена" class="form-control input-field">
+                    <label for="code">Артикул</label>
+                    <input type="text" name="code" class="form-control input-field">
+                </div>
+                <div class="select form-group mar-tp-1 mar-bt-2">
+                    <label for="price">Цена</label>
+                    <input type="number" name="price" required class="form-control input-field">
+                </div>
+                <div class="select form-group mar-tp-1 mar-bt-2">
+                    <label for="video_url">Ссылка на видео</label>
+                    <input type="text" name="video_url" class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
                     <select id="type_select" name="type">
@@ -36,19 +47,26 @@
             </div>
             <div class="select-wrapper image-upload-form">
                 <div class="select form-group upload-holder">
+                    <label for="image">Изображение</label>
                     <div class="upload-fictive"><span>Choose a file</span></div>
                     <!-- 5MB limit -->
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-                    <input type="file" name="image" class="form-control upload-file">
+                    <input type="file" name="image" required class="form-control upload-file">
                     <span class="not-found-label">File is not found</span>
                 </div>
             </div>
 
             <div class="select-wrapper mar-bt-1">
-                <textarea id="short_description" rows="4" name="short_description" placeholder="Краткое описание" class="textarea-field"></textarea>
+                <label for="short_description">Краткое описание</label>
+                <textarea id="short_description" rows="4" required name="short_description" class="textarea-field"></textarea>
             </div>
             <div class="select-wrapper mar-bt-1">
-                <textarea id="description" rows="7" name="description" placeholder="Описание" class="textarea-field"></textarea>
+                <label for="description">Описание</label>
+                <textarea id="description" rows="8" name="description" class="textarea-field"></textarea>
+            </div>
+            <div class="select-wrapper mar-bt-1">
+                <label for="long_description">Длинное описание</label>
+                <textarea id="long_description" rows="12" name="long_description" class="textarea-field"></textarea>
             </div>
 
             <input type="submit" value="Создать">
@@ -87,6 +105,7 @@
 <script>
     CKEDITOR.replace('description');
     CKEDITOR.replace('short_description');
+    CKEDITOR.replace('long_description');
 </script>
 
 @stop

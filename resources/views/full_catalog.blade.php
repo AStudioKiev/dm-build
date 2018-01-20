@@ -42,7 +42,7 @@
                                 <div class="product-name">
                                     <div>
                                         <span>{{$product->name}}</span>
-                                        <span>мягких битумных кровель</span>
+                                        <span>{{$product->name_desc}}</span>
                                     </div>
                                 </div>
                                 <div class="category-img">

@@ -7,7 +7,8 @@
             {{ csrf_field() }}
             <div class="select-wrapper">
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <input type="text" name="name" value="{{$poster->name}}" required placeholder="Название" class="form-control input-field">
+                    <label for="name">Название</label>
+                    <input type="text" name="name" value="{{$poster->name}}" required class="form-control input-field">
                 </div>
             </div>
 
@@ -16,6 +17,7 @@
                     <img width="100%" height="100%" src="{{ asset($poster->image) }}">
                 </div>
                 <div class="select form-group upload-holder">
+                    <label for="name">Изображение</label>
                     <div class="upload-fictive"><span>Choose a file</span></div>
                     <!-- 5MB limit -->
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
@@ -23,7 +25,7 @@
                     <span class="not-found-label">File is not found</span>
                 </div>
             </div>
-            
+
             <input type="submit" value="Редактировать">
         </form>
     </div>

@@ -35,7 +35,7 @@
 
         <div class="right-container catalog-list-container col-md-10">
             <div class="space-btw">
-                @foreach($products as $product)
+                @forelse($products as $product)
                     <div class="product-holder">
                         <div class="brown-border">
                             <a href="{{url('/catalog/' . $product->type . '/' . $product->subtype . '/' . $product->id)}}">
@@ -57,7 +57,12 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <h2>Товаров пока нет</h2>
+                @endforelse
+                <div class="paginate-links">
+                    {!! $products->links(); !!}
+                </div>
             </div>
         </div>
     </div>

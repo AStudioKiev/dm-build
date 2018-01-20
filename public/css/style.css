@@ -421,6 +421,9 @@ a, a:hover, a:focus {
     font-size: 16px;
 }
 
+.paginate-links {
+    display: block;
+}
 
 .contacts-container {
     margin-top: 100px;

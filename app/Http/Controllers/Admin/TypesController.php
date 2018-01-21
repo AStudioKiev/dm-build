@@ -38,6 +38,29 @@ class TypesController extends Controller
             $inputs['image'] = '/uploads/types/' . $name;
         }
 
+        if(Request::hasFile('label'))
+        {
+            do {
+                $name = $this->getRandomName();
+                $name .= substr($_FILES['label']['name'], strrpos($_FILES['label']['name'], '.'));
+
+            } while(file_exists(public_path() . '/uploads/types/' . $name));
+
+            $file = Request::file('label');
+            $file->move(public_path() . '/uploads/types/', $name);
+            $inputs['label'] = '/uploads/types/' . $name;
+        }
+
+        if(Request::hasFile('price_list'))
+        {
+            $name = $inputs['name'] . '_price_list';
+            $name .= substr($_FILES['price_list']['name'], strrpos($_FILES['price_list']['name'], '.'));
+
+            $file = Request::file('price_list');
+            $file->move(public_path() . '/uploads/types/price_list/', $name);
+            $inputs['price_list'] = '/uploads/types/price_list/' . $name;
+        }
+
         Type::create($inputs);
 
         return redirect('admin/types');
@@ -52,6 +75,7 @@ class TypesController extends Controller
     public function editType($id)
     {
         $type = Type::find($id);
+        $inputs = Request::all();
 
         if(Request::hasFile('image'))
         {
@@ -63,10 +87,54 @@ class TypesController extends Controller
             $file->move(public_path() . $path, $name);
         }
 
-        $type->name = Request::get('name');
-        $type->description = Request::get('description');
+        if(Request::hasFile('label'))
+        {
+            if(Request::get('label') !== null)
+            {
+                $pos = strrpos($type->label, '/');
+                $path = substr($type->label, 0, $pos);
+                $name = substr($type->label, $pos, strlen($type->label));
 
-        $type->update();
+                $file = Request::file('label');
+                $file->move(public_path() . $path, $name);
+            }
+            else
+            {
+                do {
+                    $name = $this->getRandomName();
+                    $name .= substr($_FILES['label']['name'], strrpos($_FILES['label']['name'], '.'));
+
+                } while(file_exists(public_path() . '/uploads/types/' . $name));
+
+                $file = Request::file('label');
+                $file->move(public_path() . '/uploads/types/', $name);
+                $inputs['label'] = '/uploads/types/' . $name;
+            }
+        }
+
+        if(Request::hasFile('price_list'))
+        {
+            if($type->price_list != null)
+            {
+                $pos = strrpos($type->price_list, '/');
+                $path = substr($type->price_list, 0, $pos);
+                $name = substr($type->price_list, $pos, strlen($type->price_list));
+
+                $file = Request::file('price_list');
+                $file->move(public_path() . $path, $name);
+            }
+            else
+            {
+                $name = $inputs['name'] . '_price_list';
+                $name .= substr($_FILES['price_list']['name'], strrpos($_FILES['price_list']['name'], '.'));
+
+                $file = Request::file('price_list');
+                $file->move(public_path() . '/uploads/types/price_list/', $name);
+                $inputs['price_list'] = '/uploads/types/price_list/' . $name;
+            }
+        }
+
+        $type->update($inputs);
 
         return redirect('admin/types');
     }
@@ -83,7 +151,12 @@ class TypesController extends Controller
         else if($productsCount != 0)
             return 'products';
         else
+        {
+            unlink(public_path() . $type->image);
+            unlink(public_path() . $type->label);
+            unlink(public_path() . $type->price_list);
             return Type::destroy(Request::get('data_id'));
+        }
     }
 
     public function subtypesIndex($type_id)

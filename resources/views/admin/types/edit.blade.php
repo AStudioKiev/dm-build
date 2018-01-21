@@ -46,7 +46,7 @@
                 </div>
                 <div class="select-wrapper image-upload-form">
                     <div class="select form-group upload-holder">
-                        <label for="price_list">Прайс-лист@if($type->price_list != null) (Загружен) @endif</label>
+                        <label for="price_list">Прайс-лист@if($type->price_list != null)(до 50 MB)(Загружен) @endif</label>
                         <div class="upload-fictive"><span>Choose a file</span></div>
                         <!-- 50MB limit -->
                         <input type="hidden" name="MAX_FILE_SIZE" value="50000000" />

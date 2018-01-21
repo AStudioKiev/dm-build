@@ -34,7 +34,9 @@
 
                     <div class="modal-body">
                         <div class="alert-ico"><img src="{{asset('img/done-tick.png')}}" alt="" width="100%"></div>
-                        <div class="alert-info"><span>Благодарим за оставленную заявку. Менеджер свяжется с вами в ближайшее время</span></div>
+                        <div class="alert-info">
+                            <span></span>
+                        </div>
                     </div>
                 </div>
             </div>

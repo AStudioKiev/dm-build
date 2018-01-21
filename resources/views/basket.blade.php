@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <input type="submit" role="button" class="orange-btn lg-btn" value="Оформить заказ">
+                <input type="submit" role="button" class="orange-btn lg-btn" data-toggle="modal" data-target="#alertModal" value="Оформить заказ">
             </form>
         </div>
     </div>
@@ -177,10 +177,14 @@
             method: 'POST',
             url: "{{url('/sendOrder')}}",
             error: function(result){
+                $('.alert-info span').text('Возникла ошибка при отправке сообщения!');
                 console.log('err: ', result);
             },
             success: function(result){
-                console.log(result);
+                $('.alert-info span').text('Благодарим за оставленную заявку. Менеджер свяжется с вами в ближайшее время!');
+                setTimeout(function(){
+                    window.location.href = "{{url('/')}}";
+                }, 3000);
             }
         });
     });

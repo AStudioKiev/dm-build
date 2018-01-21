@@ -107,9 +107,11 @@ $('.orange-sm-btn').on('click', function(){
         url : "{{url('/addToCart', $product->id)}}",
         data: {_token: $("input[name*='_token']").val()},
         error: function(result){
+            $('.alert-info span').text('Возникла ошибка при добавлении товара в корзину!');
             console.log('error: ', result);
         },
         success: function(result){
+            $('.alert-info span').text('Товар успешно добавлен в корзину!');
             var count = parseInt($('.cart-count span').text()) + 1;
             $('.cart-count span').text(count);
         }

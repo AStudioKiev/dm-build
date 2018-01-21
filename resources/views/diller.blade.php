@@ -60,7 +60,7 @@
                 </div>
                 {{csrf_field()}}
 
-                <input type="submit" role="button" class="orange-btn" value="Отправить заявку">
+                <input type="submit" role="button" class="orange-btn" data-toggle="modal" data-target="#alertModal" value="Отправить заявку">
             </form>
         </div>
     </div>
@@ -89,7 +89,16 @@ $('#contactPopup').on('submit', function(event){
         method: 'POST',
         url: "{{url('/dillerSend')}}",
         error: function(result){
+            $('.alert-info span').text('Возникла ошибка при отправке сообщения!');
             console.log('err: ', result);
+        },
+        success: function(result){
+            $('.alert-info span').text('Благодарим за оставленную заявку. Менеджер свяжется с вами в ближайшее время!');
+            $('input[name=fio]').val('');
+            $('input[name=company]').val('');
+            $('input[name=address]').val('');
+            $('input[name=phone]').val('');
+            $('input[name=email]').val('');
         }
     });
 });

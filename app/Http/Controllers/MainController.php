@@ -19,18 +19,17 @@ class MainController extends Controller
         return view('index', compact('posters', 'types', 'basketCount'));
     }
 
-    public function pricelist()
+    public function pricelist($id = 0)
     {
         $basketCount = $this->getBasketCount();
         $parent_types = Type::whereNull('parent_id')->get();
 
-        $child_types = [];
-        foreach ($parent_types as $parent_type)
-        {
-            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get();
-        }
+        if($id == 0)
+            $type = Type::find($parent_types[0]->id);
+        else
+            $type = Type::find($id);
 
-        return view('pricelist', compact('parent_types', 'child_types', 'basketCount'));
+        return view('pricelist', compact('parent_types', 'type', 'basketCount'));
     }
 
     public function contacts()

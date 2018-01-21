@@ -11,7 +11,9 @@ Route::get('/contacts', 'MainController@contacts');
 Route::get('/aboutus', 'MainController@aboutus');
 Route::get('/delivery', 'MainController@delivery');
 Route::get('/diller', 'MainController@diller');
-Route::get('/pricelist', 'MainController@pricelist');
+
+Route::get('/pricelist/{id?}', 'MainController@pricelist');
+
 Route::get('/basket', 'FiltersController@basket');
 
 Route::post('/getSubtypes', 'MainController@getSubtypes');

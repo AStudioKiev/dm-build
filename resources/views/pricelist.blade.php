@@ -37,7 +37,7 @@
             </div>
 
             <div class="mar-tp-4" align="center">
-                <input type="submit" role="button" class="orange-btn" value="Открыть прайс-лист">
+                <a class="orange-btn" href="{{$type->price_list}}">Открыть прайс-лист</a>
             </div>
         </div>
     </div>

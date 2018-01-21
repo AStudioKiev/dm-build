@@ -10,6 +10,7 @@
     <title>ДМ-СТРОЙ</title>
 
     <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
 
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">

@@ -12,20 +12,20 @@ class FiltersController extends Controller
     public function index()
     {
         $basketCount = $this->getBasketCount();
-        $types = Type::whereNull('parent_id')->get();
+        $types = Type::whereNull('parent_id')->get(['id', 'name', 'image', 'description']);
         return view('type_catalog', compact('types', 'basketCount'));
     }
 
     public function getTypeIndex($type)
     {
         $basketCount = $this->getBasketCount();
-        $products = Product::where('type', $type)->paginate(15);
-        $parent_types = Type::whereNull('parent_id')->get();
+        $products = Product::where('type', $type)->paginate(15, ['id', 'name', 'name_desc', 'image', 'short_description']);
+        $parent_types = Type::whereNull('parent_id')->get(['id', 'name']);
 
         $child_types = [];
         foreach ($parent_types as $parent_type)
         {
-            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get();
+            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get(['id', 'name']);
         }
 
         return view('full_catalog', compact('products', 'parent_types', 'child_types', 'type', 'basketCount'));
@@ -34,13 +34,13 @@ class FiltersController extends Controller
     public function getSubtypeIndex($type, $subtype)
     {
         $basketCount = $this->getBasketCount();
-        $products = Product::where('subtype', $subtype)->paginate(15);
-        $parent_types = Type::whereNull('parent_id')->get();
+        $products = Product::where('subtype', $subtype)->paginate(15, ['id', 'name', 'name_desc', 'image', 'short_description']);
+        $parent_types = Type::whereNull('parent_id')->get(['id', 'name']);
 
         $child_types = [];
         foreach ($parent_types as $parent_type)
         {
-            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get();
+            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get(['id', 'name']);
         }
 
         return view('full_catalog', compact('products', 'parent_types', 'child_types', 'type', 'basketCount'));
@@ -50,12 +50,12 @@ class FiltersController extends Controller
     {
         $basketCount = $this->getBasketCount();
         $product = Product::find($product_id);
-        $parent_types = Type::whereNull('parent_id')->get();
+        $parent_types = Type::whereNull('parent_id')->get(['id', 'name']);
 
         $child_types = [];
         foreach ($parent_types as $parent_type)
         {
-            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get();
+            $child_types[$parent_type->id] = Type::where('parent_id', $parent_type->id)->get(['id', 'name']);
         }
 
         $product->type = Type::find($type);

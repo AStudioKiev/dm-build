@@ -14,7 +14,7 @@ class MainController extends Controller
     {
         $basketCount = $this->getBasketCount();
         $posters = Poster::take(10)->get();
-        $types = Type::whereNull('parent_id')->get();
+        $types = Type::whereNull('parent_id')->get(['id', 'name', 'image', 'description']);
 
         return view('index', compact('posters', 'types', 'basketCount'));
     }
@@ -22,7 +22,7 @@ class MainController extends Controller
     public function pricelist($id = 0)
     {
         $basketCount = $this->getBasketCount();
-        $parent_types = Type::whereNull('parent_id')->get();
+        $parent_types = Type::whereNull('parent_id')->get(['id', 'name']);
 
         if($id == 0)
             $type = Type::find($parent_types[0]->id);

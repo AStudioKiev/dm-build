@@ -12,7 +12,7 @@ class TypesController extends Controller
 {
     public function typesIndex()
     {
-        $types = Type::whereNull('parent_id')->paginate(10);
+        $types = Type::whereNull('parent_id')->paginate(10, ['id', 'name', 'image', 'description']);
         return view('admin.types.index', compact('types'));
     }
 
@@ -161,7 +161,7 @@ class TypesController extends Controller
 
     public function subtypesIndex($type_id)
     {
-        $types = Type::where('parent_id', $type_id)->paginate(10);
+        $types = Type::where('parent_id', $type_id)->paginate(10, ['id', 'name']);
         return view('admin.types.subtypes.index', compact('types'));
     }
 
@@ -179,7 +179,7 @@ class TypesController extends Controller
     public function editSubtypeIndex($id)
     {
         $type = Type::find($id);
-        $parentTypes = Type::whereNull('parent_id')->get();
+        $parentTypes = Type::whereNull('parent_id')->get(['id', 'name']);
 
         return view('admin.types.subtypes.edit', compact('type', 'parentTypes'));
     }

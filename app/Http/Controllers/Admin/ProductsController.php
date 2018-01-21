@@ -12,13 +12,13 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::paginate(10, ['id', 'code', 'name', 'image']);
         return view('admin.products.index', compact('products'));
     }
 
     public function addIndex()
     {
-        $parentTypes = Type::whereNull('parent_id')->get();
+        $parentTypes = Type::whereNull('parent_id')->get(['id', 'name']);
         return view('admin.products.add', compact('parentTypes'));
     }
 
@@ -46,8 +46,8 @@ class ProductsController extends Controller
     public function editIndex($id)
     {
         $product = Product::find($id);
-        $parentTypes = Type::whereNull('parent_id')->get();
-        $childTypes = Type::where('parent_id', $product->type)->get();
+        $parentTypes = Type::whereNull('parent_id')->get(['id', 'name']);
+        $childTypes = Type::where('parent_id', $product->type)->get(['id', 'name']);
 
         return view('admin.products.edit', compact('product', 'parentTypes', 'childTypes'));
     }
@@ -78,7 +78,7 @@ class ProductsController extends Controller
 
     public function basket()
     {
-        $products = Product::onlyTrashed()->paginate(10);
+        $products = Product::onlyTrashed()->paginate(10, ['id', 'code', 'name', 'image']);
         return view('admin.products.basket', compact('products'));
     }
 

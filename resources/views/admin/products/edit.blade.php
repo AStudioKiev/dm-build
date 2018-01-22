@@ -31,7 +31,7 @@
                     <input type="text" name="video_url" value="{{$product->video_url}}" class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <select id="type_select" name="type">
+                    <select id="type_select" name="type" class="selectpicker">
                         <option selected disabled>Выберите тип</option>
                         @foreach($parentTypes as $parentType)
                             <option @if($parentType->id == $product->type) selected @endif value="{{$parentType->id}}">{{$parentType->name}}</option>
@@ -39,7 +39,7 @@
                     </select>
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <select id="subtype_select" name="subtype">
+                    <select id="subtype_select" name="subtype" class="selectpicker">
                         <option selected disabled>Выберите подтип</option>
                         <option value="NULL">Отсутствует</option>
                         @foreach($childTypes as $childType)
@@ -81,7 +81,7 @@
                 </textarea>
             </div>
 
-            <input type="submit" value="Редактировать">
+            <input type="submit" value="Редактировать" class="white-btn">
         </form>
     </div>
 @stop
@@ -106,6 +106,7 @@
                 $('#subtype_select').empty();
                 $('#subtype_select').append('<option selected disabled>Выберите подтип</option>');
                 $('#subtype_select').append('<option value="NULL">Отсутствует</option>');
+
                 result.forEach(function(item, i, result) {
                     $('#subtype_select').append('<option value="'+ item.id +'">'+ item.name +'</option>');
                 });

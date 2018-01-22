@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <input type="submit" value="Создать">
+            <input type="submit" value="Создать" class="white-btn">
         </form>
     </div>
 @stop

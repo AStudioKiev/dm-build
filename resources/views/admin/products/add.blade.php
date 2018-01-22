@@ -31,7 +31,7 @@
                     <input type="text" name="video_url" class="form-control input-field">
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <select id="type_select" name="type">
+                    <select id="type_select" name="type" class="selectpicker">
                         <option selected disabled>Выберите тип</option>
                         @foreach($parentTypes as $parentType)
                             <option value="{{$parentType->id}}">{{$parentType->name}}</option>
@@ -39,7 +39,7 @@
                     </select>
                 </div>
                 <div class="select form-group mar-tp-1 mar-bt-2">
-                    <select id="subtype_select" name="subtype">
+                    <select id="subtype_select" name="subtype" class="selectpicker">
                         <option selected disabled>Выберите подтип</option>
                         <option value="NULL">Отсутствует</option>
                     </select>
@@ -69,7 +69,7 @@
                 <textarea id="long_description" rows="12" name="long_description" class="textarea-field"></textarea>
             </div>
 
-            <input type="submit" value="Создать">
+            <input type="submit" value="Создать" class="white-btn">
         </form>
     </div>
 @stop

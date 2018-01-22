@@ -263,7 +263,7 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     border-radius: 5px;
 }
 .image-upload-form {
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
 }
 .image-upload-form>* {
@@ -321,7 +321,22 @@ textarea::placeholder { font-size: 20px; text-align: center; }
     border-radius: 5px;
 }
 
-
+.white-btn {
+    border-top: 2px solid rgba(74, 74, 74, 0.8);
+    border-right: 2px solid rgba(112, 112, 112, 0.8);
+    border-bottom: 0;
+    border-left: 0;
+    display: block;
+    height: 40px;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 37px;
+    border-radius: 5px;
+    margin: 20px auto;
+}
 .confirmed-outer {
     width: 100%;
     display: table;

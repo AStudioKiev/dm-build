@@ -6,14 +6,16 @@
     @foreach($types as $type)
         <div class="category-card">
             <div class="brown-border">
-                <a href="{{url('/catalog', $type->id)}}">
-                    <div class="category-name">
+                <div class="category-name">
+                    <a href="{{url('/catalog', $type->id)}}">
                         <span>{{$type->name}}</span>
-                    </div>
-                    <div class="category-img">
+                    </a>
+                </div>
+                <div class="category-img">
+                    <a href="{{url('/catalog', $type->id)}}">
                         <img src="{{asset($type->image)}}" height="100%">
-                    </div>
-                </a>
+                    </a>
+                </div>
                 <div class="category-info">
                     <span>{!! $type->description !!}</span>
                 </div>

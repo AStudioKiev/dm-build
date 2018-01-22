@@ -19,7 +19,8 @@ class FiltersController extends Controller
     public function getTypeIndex($type)
     {
         $basketCount = $this->getBasketCount();
-        $products = Product::where('type', $type)->paginate(15, ['id', 'name', 'name_desc', 'image', 'short_description']);
+        $products = Product::where('type', $type)->paginate(15, ['id', 'name',
+        'name_desc', 'image', 'short_description', 'type', 'subtype']);
         $parent_types = Type::whereNull('parent_id')->get(['id', 'name']);
 
         $child_types = [];
@@ -34,7 +35,8 @@ class FiltersController extends Controller
     public function getSubtypeIndex($type, $subtype)
     {
         $basketCount = $this->getBasketCount();
-        $products = Product::where('subtype', $subtype)->paginate(15, ['id', 'name', 'name_desc', 'image', 'short_description']);
+        $products = Product::where('subtype', $subtype)->paginate(15, ['id', 'name',
+        'name_desc', 'image', 'short_description', 'type', 'subtype']);
         $parent_types = Type::whereNull('parent_id')->get(['id', 'name']);
 
         $child_types = [];

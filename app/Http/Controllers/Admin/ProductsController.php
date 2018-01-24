@@ -66,7 +66,18 @@ class ProductsController extends Controller
             $file->move(public_path() . $path, $name);
         }
 
-        $product->update(Request::all());
+        $product->name = Request::get('name');
+        $product->name_desc = Request::get('name_desc');
+        $product->long_description = Request::get('long_description');
+        $product->description = Request::get('description');
+        $product->short_description = Request::get('short_description');
+        $product->video_url = Request::get('video_url');
+        $product->type = Request::get('type');
+        $product->subtype = Request::get('subtype');
+        $product->code = Request::get('code');
+        $product->price = Request::get('price');
+
+        $product->update();
 
         return redirect('admin/products');
     }

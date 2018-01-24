@@ -118,6 +118,7 @@
 <script>
     CKEDITOR.replace('description');
     CKEDITOR.replace('short_description');
+    CKEDITOR.replace('long_description');
 </script>
 
 @stop

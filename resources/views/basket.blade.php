@@ -5,7 +5,12 @@
 <div class="cart-container">
     <div class="row">
         <div class="bought-grid col-md-7">
-            <h3 class="cart-header">Ваши покупки</h3>
+            @if(!empty($products))
+                <h3 class="cart-header">Ваши покупки</h3>
+            @else
+                <h3 class="cart-header">Корзина пуста</h3>
+            @endif
+
             @foreach($products as $product)
                 <div class="bought-panel" data-id="{{$product->id}}">
                     <div class="bought-info">
@@ -160,6 +165,9 @@
                 $('.bought-panel[data-id=' + data.data_id + ']').remove();
             }
         });
+    });
+    $('#cartForm').on('click', function(event){
+        $('.alert-info span').text('Ошибка заполнения формы!');
     });
 
     $('#cartForm').on('submit', function(event){

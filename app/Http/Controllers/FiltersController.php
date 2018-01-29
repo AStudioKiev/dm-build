@@ -140,7 +140,7 @@ class FiltersController extends Controller
             }
 
             mail(
-                'astudio0711@gmail.com',
+                'retail@dmstroy.su',
                 "Письмо с ДМ-СТРОЙ",
                 $message,
                 "Content-type:text/html;charset=UTF-8"

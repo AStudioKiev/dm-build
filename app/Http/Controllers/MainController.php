@@ -65,7 +65,7 @@ class MainController extends Controller
         Его email: $email<br/>";
 
         mail(
-            'astudio0711@gmail.com',
+            'diler@dmstroy.su',
             "Письмо с ДМ-СТРОЙ",
             $message,
             "Content-type:text/html;charset=UTF-8"
